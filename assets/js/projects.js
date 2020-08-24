@@ -82,6 +82,11 @@ const getYouTubeIframeUrl = project => {
 
 const clearUrl = text => encodeURIComponent(text.replace(/ /g, '_'));
 
+const getProjectUrl = project => {
+    const pageUrl = new URL(document.URL);
+    return `${pageUrl.origin}${pageUrl.pathname}#projeto_${clearUrl(project.id)}`;
+};
+
 const createProjectElement = (project, index) => {
     // Clone base element
     const projectElement = projectBaseElement.clone();
@@ -133,8 +138,7 @@ const createProjectElement = (project, index) => {
     projectTagBase.remove();
 
     // Link
-    const pageUrl = new URL(document.URL);
-    const link = `${pageUrl.origin}${pageUrl.pathname}#projeto_${clearUrl(project.id)}`;
+    const link = getProjectUrl(project);
     projectElement.find('a').attr('href', link);
 
     // Add new element to projectBaseElement's parent
@@ -170,6 +174,9 @@ const loadEvents = function () {
             soundcloudIframeWrapper.html(project.soundcloud);
             soundcloudIframeWrapper.show();
         }
+
+        const urlInput = $('.project__share_link_url');
+        urlInput.val(getProjectUrl(project));
 
         projectShareLink.hide();
 
