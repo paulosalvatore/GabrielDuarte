@@ -2837,6 +2837,10 @@ article {
 				background-color: #E3C3A1;
 			}
 
+			.tiles article.style6 > .image:before {
+				background-color: #FFE6E8;
+			}
+
 			body:not(.is-touch) .tiles article:hover > .image {
 				-moz-transform: scale(1.1);
 				-webkit-transform: scale(1.1);
