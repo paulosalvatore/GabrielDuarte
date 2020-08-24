@@ -1,7 +1,5 @@
 <!DOCTYPE HTML>
 <!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
@@ -16,6 +14,16 @@
     </noscript>
 </head>
 <body class="is-preload">
+
+<div id="projectDetails" class="modal">
+
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal.</p>
+    </div>
+
+</div>
+
 <!-- Wrapper -->
 <div id="wrapper">
 
@@ -26,13 +34,20 @@
         <span class="title logo">- Portfólio de locução -</span>
         <section>
             <ul class="icons">
-                <li><a href="https://api.whatsapp.com/send/?phone=5511986686443" target="_blank" class="icon brands style2 fa-whatsapp"><span class="label">Whatsapp</span></a></li>
-                <li><a href="tel:5511986686443" class="icon solid style2 fa-phone"><span class="label">Telefone</span></a></li>
-                <li><a href="mailto:presto.gabriel@gmail.com" class="icon solid style2 fa-envelope"><span class="label">E-mail</span></a></li>
-                <li><a href="https://www.facebook.com/gabrielduarte2007" target="_blank" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
-                <li><a href="https://www.instagram.com/gabrielduarte_loc/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="https://soundcloud.com/gabrielduarte" target="_blank" class="icon brands style2 fa-soundcloud"><span class="label">Soundcloud</span></a></li>
-                <li><a href="https://www.youtube.com/channel/UCbrKBu8AyztZCIW0u7R_42A" target="_blank" class="icon brands style2 fa-youtube"><span class="label">YouTube</span></a></li>
+                <li><a href="https://api.whatsapp.com/send/?phone=5511986686443" target="_blank"
+                       class="icon brands style2 fa-whatsapp"><span class="label">Whatsapp</span></a></li>
+                <li><a href="tel:5511986686443" class="icon solid style2 fa-phone"><span
+                        class="label">Telefone</span></a></li>
+                <li><a href="mailto:presto.gabriel@gmail.com" class="icon solid style2 fa-envelope"><span class="label">E-mail</span></a>
+                </li>
+                <li><a href="https://www.facebook.com/gabrielduarte2007" target="_blank"
+                       class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="https://www.instagram.com/gabrielduarte_loc/" target="_blank"
+                       class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="https://soundcloud.com/gabrielduarte" target="_blank"
+                       class="icon brands style2 fa-soundcloud"><span class="label">Soundcloud</span></a></li>
+                <li><a href="https://www.youtube.com/channel/UCbrKBu8AyztZCIW0u7R_42A" target="_blank"
+                       class="icon brands style2 fa-youtube"><span class="label">YouTube</span></a></li>
             </ul>
         </section>
 
@@ -53,11 +68,85 @@
             </form>
 
             <section class="tiles">
-                <article class="style1">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+
+                <!--<audio controls>
+                    <source src="https://github.com/paulosalvatore/GabrielDuarte/raw/master/media/audio/Accor - VIDEO-2020-07-21-15-01-37.mp3"
+                            type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>-->
+
+                <!--Modelos:
+                https://youtu.be/nK0L51DUf9I
+                https://www.youtube.com/watch?v=nK0L51DUf9I&feature=youtu.be
+
+                Extrair ID: nK0L51DUf9I
+
+                Transformar em: https://www.youtube.com/embed/{video_id}
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/nK0L51DUf9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+
+                <!--<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/881188537&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                    <a href="https://soundcloud.com/gabrielduarte" title="Gabriel Duarte - Locutor" target="_blank"
+                       style="color: #cccccc; text-decoration: none;">Gabriel Duarte - Locutor</a> · <a
+                        href="https://soundcloud.com/gabrielduarte/accor-video-2020-07-21-15-01-37" title="Accor"
+                        target="_blank" style="color: #cccccc; text-decoration: none;">Accor</a>
+                </div>
+
+                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/881188480&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                    <a href="https://soundcloud.com/gabrielduarte" title="Gabriel Duarte - Locutor" target="_blank"
+                       style="color: #cccccc; text-decoration: none;">Gabriel Duarte - Locutor</a> · <a
+                        href="https://soundcloud.com/gabrielduarte/accor-video-2020-07-21-15-01-37" title="Accor"
+                        target="_blank" style="color: #cccccc; text-decoration: none;">Accor</a>
+                </div>-->
+
+                <!--
+                Projeto:
+                id: "" // Será usado para o nome do arquivo de vídeo e/ou de áudio
+                imagem: "URL_IMAGEM" // Pegar sempre da thumbnail do youtube ou fornecer um link. Se não fornecer o link, pega do youtube
+                titulo: ""
+                subtitulo: ""
+                Tags (lista) // Lista com o nome das Tags
+                tipo: "VIDEO" ou "AUDIO"
+                principal: true
+                soundcloud: "<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/881235745&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/paulo-salvatore-920317694" title="Paulo Salvatore" target="_blank" style="color: #cccccc; text-decoration: none;">Paulo Salvatore</a> · <a href="https://soundcloud.com/paulo-salvatore-920317694/anhembi-ead" title="Anhembi EAD" target="_blank" style="color: #cccccc; text-decoration: none;">Anhembi EAD</a></div>"
+                youtube: "URL_VIDEO"
+
+                tags: [ // três primeiras são as visíveis
+                    "Institucional",
+                    "Alegre",
+                    "Emoção",
+                    "Felicidade"
+                ]
+
+                // Funcionamento
+                - Quando tem vídeo:
+                Pode baixar só o áudio e só o vídeo
+                - Quando só tem áudio:
+                Download só do áudio
+
+                tags: // Apenas as tags que vão ter ALIAS
+                nome: Alegre
+                alias: [
+                    "Alegri"
+                    "Alegria"
+                ]
+
+                nome: Volkswagem
+                alias: [
+                    "Volksvagem"
+                ]
+                -->
+
+                <article class="project style1">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+
+                    <a class="link">
                         <h2>Amazon Prime</h2>
                         <h3>Grandes Estrelas</h3>
                         <div class="content">
@@ -67,11 +156,12 @@
                         </div>
                     </a>
                 </article>
-                <article class="style2">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+
+                <article class="project style2">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+                    <a class="link">
                         <h2>Bonduelle</h2>
                         <h3>Ao Natural</h3>
                         <div class="content">
@@ -81,11 +171,11 @@
                         </div>
                     </a>
                 </article>
-                <article class="style3">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+                <article class="project style3">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+                    <a class="link">
                         <h2>bradesco</h2>
                         <h3>fale com a bia</h3>
                         <div class="content">
@@ -95,11 +185,11 @@
                         </div>
                     </a>
                 </article>
-                <article class="style4">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+                <article class="project style4">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+                    <a class="link">
                         <h2>extra</h2>
                         <h3>Que vantagem maria leva?</h3>
                         <div class="content">
@@ -109,11 +199,11 @@
                         </div>
                     </a>
                 </article>
-                <article class="style5">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+                <article class="project style5">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+                    <a class="link">
                         <h2>fiat</h2>
                         <h3>Promoção Big Drive BBB</h3>
                         <div class="content">
@@ -123,11 +213,11 @@
                         </div>
                     </a>
                 </article>
-                <article class="style6">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+                <article class="project style6">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+                    <a class="link">
                         <h2>Quickbooks</h2>
                         <h3>black friday</h3>
                         <div class="content">
@@ -137,11 +227,11 @@
                         </div>
                     </a>
                 </article>
-                <article class="style1">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+                <article class="project style1">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+                    <a class="link">
                         <h2>Sanofi</h2>
                         <h3>Mobility</h3>
                         <div class="content">
@@ -151,11 +241,11 @@
                         </div>
                     </a>
                 </article>
-                <article class="style2">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+                <article class="project style2">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+                    <a class="link">
                         <h2>TiendaMia.com</h2>
                         <h3>Compre nos EUA</h3>
                         <div class="content">
@@ -165,11 +255,11 @@
                         </div>
                     </a>
                 </article>
-                <article class="style3">
-									<span class="image">
-										<img src="images/pic02.png" alt=""/>
-									</span>
-                    <a href="generic.html">
+                <article class="project style3">
+                    <span class="image">
+                        <img src="images/pic02.png" alt=""/>
+                    </span>
+                    <a class="link">
                         <h2>AliExpress</h2>
                         <h3>Sonhando acordado</h3>
                         <div class="content">
@@ -201,6 +291,8 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/modal.js"></script>
+<script src="assets/js/script.js"></script>
 
 </body>
 </html>
