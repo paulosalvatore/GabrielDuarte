@@ -68,31 +68,33 @@ const loadYouTubeImage = project => {
     return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 };
 
+const clearUrl = text => encodeURIComponent(text.replace(/ /g, '_'));
+
 const createProjectElement = (project, index) => {
     // Clone base element
-    const cloneElement = projectBaseElement.clone();
+    const projectElement = projectBaseElement.clone();
 
     // Remove id so element can be shown
-    cloneElement.removeAttr('id');
+    projectElement.removeAttr('id');
 
     // Set data-project based on index
-    cloneElement.data('project', index);
+    projectElement.data('project', index);
 
     // Add element's class based on index
-    cloneElement.addClass('style_' + index);
+    projectElement.addClass('style_' + index);
 
     // Change image
 
     const imageUrl = project.imagem || loadYouTubeImage(project);
-    const imageElement = cloneElement.find('.image');
+    const imageElement = projectElement.find('.image');
 
     imageElement.find('.project__image').css('background-image', `url('${imageUrl}')`);
 
     // Title and subtitle
 
-    cloneElement.find('.project__title').text(project.titulo);
+    projectElement.find('.project__title').text(project.titulo);
 
-    const subtitleElement = cloneElement.find('.project__subtitle');
+    const subtitleElement = projectElement.find('.project__subtitle');
 
     if (project.subtitulo) {
         subtitleElement.text(project.subtitulo);
@@ -102,7 +104,7 @@ const createProjectElement = (project, index) => {
 
     // Tags
 
-    const projectTagsElement = cloneElement.find('.project__tags');
+    const projectTagsElement = projectElement.find('.project__tags');
     const projectTagBase = projectTagsElement.find('.project__tag');
 
     const tagsLength = !project.tags ? 0 : project.tags.length;
@@ -118,28 +120,32 @@ const createProjectElement = (project, index) => {
 
     projectTagBase.remove();
 
+    // Link
+    const pageUrl = new URL(document.URL);
+    const link = `${pageUrl.origin}${pageUrl.pathname}#projeto_${clearUrl(project.id)}`;
+    projectElement.find('a').attr('href', link);
+
     // Add new element to projectBaseElement's parent
-    projectBaseElement.parent().append(cloneElement);
+    projectBaseElement.parent().append(projectElement);
 };
 
-const loadEvents = function (){
+const loadEvents = function () {
     // Project Share Link
-
     const projectShareLink = $('.project__share_link');
 
     // Modal display
     const projectDetailsModal = $('#projectDetails');
 
-    const body = $('body');
-
     $('.project .link').on('click', function () {
-        console.log($(this));
+        const projectIndex = $(this).closest('.project').data('project');
+        const project = projects[projectIndex];
+        console.log(project);
 
         projectShareLink.hide();
 
         projectDetailsModal.show();
 
-        body.css('overflow', 'hidden');
+        $('body').css('overflow', 'hidden');
     });
 };
 
@@ -149,7 +155,7 @@ const loadAutocomplete = () => {
 
     const searchInput = $('.search');
 
-    searchInput.each(function() {
+    searchInput.each(function () {
         autocomplete($(this)[0], tags);
     });
 };
