@@ -56,13 +56,30 @@ $.getJSON('data/tags.json', data => {
 
 const projectBaseElement = $('#project_base');
 
-const loadYouTubeImage = project => 'https://img.youtube.com/vi/nK0L51DUf9I/hqdefault.jpg';
+const loadYouTubeImage = project => {
+    let videoId = undefined;
+
+    if (project.youtube) {
+        const url = new URL(project.youtube);
+
+        videoId = url.pathname.includes('watch') ? url.searchParams.get('v') : url.pathname.slice(1);
+    }
+
+    return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+};
 
 const createProjectElement = (project, index) => {
+    // Clone base element
     const cloneElement = projectBaseElement.clone();
-    cloneElement.attr('id', '');
 
-    cloneElement.addClass('style_' + index)
+    // Remove id so element can be shown
+    cloneElement.removeAttr('id');
+
+    // Set data-project based on index
+    cloneElement.data('project', index);
+
+    // Add element's class based on index
+    cloneElement.addClass('style_' + index);
 
     // Change image
 
@@ -106,8 +123,45 @@ const createProjectElement = (project, index) => {
     projectBaseElement.parent().append(cloneElement);
 };
 
+const loadEvents = function (){
+    // Project Share Link
+
+    const projectShareLink = $('.project__share_link');
+
+    // Modal display
+    const projectDetailsModal = $('#projectDetails');
+
+    const body = $('body');
+
+    $('.project .link').on('click', function () {
+        console.log($(this));
+
+        projectShareLink.hide();
+
+        projectDetailsModal.show();
+
+        body.css('overflow', 'hidden');
+    });
+};
+
+const loadAutocomplete = () => {
+    // Search Autocomplete
+
+    const tags = Array.from(new Set(projects.map(project => project.tags).flat()));
+
+    const searchInput = $('.search');
+
+    searchInput.each(function() {
+        autocomplete($(this)[0], tags);
+    });
+};
+
 const createProjectElements = projects => {
     projects.forEach(createProjectElement);
+
+    loadEvents();
+
+    loadAutocomplete();
 };
 
 const dataReady = () => {

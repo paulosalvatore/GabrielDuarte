@@ -17,12 +17,27 @@
     ]
   },
   {
-    "id": "Philips Duravita (Exemplo vídeo - principal)",
+    "id": "Philips Duravita (Exemplo vídeo - principal - com url youtu.be)",
     "titulo": "Philips",
     "subtitulo": "Duravita",
     "tipo": "VIDEO",
     "principal": true,
     "youtube": "https://youtu.be/1xVqkPg_Qs8",
+    "tags": [
+      "Banco",
+      "Farmacêutico",
+      "Cerveja",
+      "Combustível",
+      "Educação"
+    ]
+  },
+  {
+    "id": "Philips Duravita (Exemplo vídeo - principal - com url youtube.com/watch?v=)",
+    "titulo": "Philips",
+    "subtitulo": "Duravita",
+    "tipo": "VIDEO",
+    "principal": true,
+    "youtube": "https://www.youtube.com/watch?v=1xVqkPg_Qs8&feature=youtu.be",
     "tags": [
       "Banco",
       "Farmacêutico",
