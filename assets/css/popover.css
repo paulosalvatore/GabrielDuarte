@@ -66,13 +66,13 @@
 .bs-popover-auto[x-placement^=top] .arrow::before,
 .bs-popover-top .arrow::before {
     bottom: 0;
-    border-top-color: rgba(0, 0, 0, .25)
+    border-top-color: #323232
 }
 
 .bs-popover-auto[x-placement^=top] .arrow::after,
 .bs-popover-top .arrow::after {
     bottom: 1px;
-    border-top-color: #fff
+    border-top-color: #323232
 }
 
 .bs-popover-auto[x-placement^=right],
@@ -98,13 +98,13 @@
 .bs-popover-auto[x-placement^=right] .arrow::before,
 .bs-popover-right .arrow::before {
     left: 0;
-    border-right-color: rgba(0, 0, 0, .25)
+    border-right-color: #323232
 }
 
 .bs-popover-auto[x-placement^=right] .arrow::after,
 .bs-popover-right .arrow::after {
     left: 1px;
-    border-right-color: #fff
+    border-right-color: #323232
 }
 
 .bs-popover-auto[x-placement^=bottom],
@@ -127,7 +127,7 @@
 .bs-popover-auto[x-placement^=bottom] .arrow::before,
 .bs-popover-bottom .arrow::before {
     top: 0;
-    border-bottom-color: rgba(0, 0, 0, .25)
+    border-bottom-color: #323232
 }
 
 .bs-popover-auto[x-placement^=bottom] .arrow::after,
@@ -171,7 +171,7 @@
 .bs-popover-auto[x-placement^=left] .arrow::before,
 .bs-popover-left .arrow::before {
     right: 0;
-    border-left-color: rgba(0, 0, 0, .25)
+    border-left-color: #323232
 }
 
 .bs-popover-auto[x-placement^=left] .arrow::after,
@@ -196,6 +196,7 @@
 }
 
 .popover-body {
+    font-size: 12px;
     padding: .5rem .75rem;
     background: #323232;
     color: #f1f1f1;

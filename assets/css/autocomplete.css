@@ -8,6 +8,7 @@
     display: inline-block;
     width: 100%;
     margin-bottom: 20px;
+    top: -8px;
 }
 
 .autocomplete-items {
@@ -15,14 +16,14 @@
     z-index: 5;
     background: white;
     width: 100%;
-    max-height: 150px;
+    max-height: 235px;
     overflow: auto;
     text-align: left;
     border: 1px solid #d4d4d4;
     border-bottom: none;
-    border-top: none;
     left: 0;
     right: 0;
+    opacity: 0;
 }
 
 .autocomplete-items div {
