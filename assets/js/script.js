@@ -62,19 +62,25 @@ $(function () {
         if (projectShareLink.css('display') === 'none') {
             projectShareLink.slideDown(slideDuration, selectUrlInput);
         } else {
-            projectShareLink.slideUp(slideDuration, selectUrlInput);
+            projectShareLink.slideUp(slideDuration);
         }
     });
 
     const shareLinkCopy = $('.project__share_link_copy');
 
-    shareLinkCopy.popover({
-        trigger: 'focus'
+    shareLinkCopy.popover();
+
+    $('body, html').on('click', () => {
+        shareLinkCopy.popover('hide');
     });
 
-    shareLinkCopy.on('click', function () {
+    shareLinkCopy.on('click', function (event) {
+        shareLinkCopy.popover('show');
+
         selectUrlInput();
 
         document.execCommand('copy'); // Copy the text inside the text field
+
+        event.stopPropagation();
     });
 });
