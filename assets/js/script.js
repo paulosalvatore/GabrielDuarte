@@ -35,7 +35,7 @@ $(function () {
     $('.project .link').on('click', () => {
         projectShareLink.hide();
 
-        projectDetailsModal.fadeIn();
+        projectDetailsModal.show();
 
         body.css('overflow', 'hidden');
     });
