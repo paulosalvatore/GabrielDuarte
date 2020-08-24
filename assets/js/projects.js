@@ -21,6 +21,8 @@ let projects = [];
 let colors = [];
 let tags = [];
 
+const visibleTagsAmount = 3;
+
 const createColorsClasses = () => {
     const style = document.createElement('style');
     style.type = 'text/css';
@@ -54,6 +56,8 @@ $.getJSON('data/tags.json', data => {
 
 const projectBaseElement = $('#project_base');
 
+const loadYouTubeImage = project => 'https://img.youtube.com/vi/nK0L51DUf9I/hqdefault.jpg';
+
 const createProjectElement = (project, index) => {
     const cloneElement = projectBaseElement.clone();
     cloneElement.attr('id', '');
@@ -62,10 +66,40 @@ const createProjectElement = (project, index) => {
 
     // Change image
 
-    const imageUrl = 'https://img.youtube.com/vi/nK0L51DUf9I/hqdefault.jpg';
+    const imageUrl = project.imagem || loadYouTubeImage(project);
     const imageElement = cloneElement.find('.image');
 
-    imageElement.find('img').attr('src', imageUrl);
+    imageElement.find('.project__image').css('background-image', `url('${imageUrl}')`);
+
+    // Title and subtitle
+
+    cloneElement.find('.project__title').text(project.titulo);
+
+    const subtitleElement = cloneElement.find('.project__subtitle');
+
+    if (project.subtitulo) {
+        subtitleElement.text(project.subtitulo);
+    } else {
+        subtitleElement.hide();
+    }
+
+    // Tags
+
+    const projectTagsElement = cloneElement.find('.project__tags');
+    const projectTagBase = projectTagsElement.find('.project__tag');
+
+    const tagsLength = !project.tags ? 0 : project.tags.length;
+    for (let i = 0; i < Math.min(visibleTagsAmount, tagsLength); i++) {
+        const tag = project.tags[i];
+
+        const projectTagClone = projectTagBase.clone();
+
+        projectTagClone.text(tag);
+
+        projectTagsElement.append(projectTagClone);
+    }
+
+    projectTagBase.remove();
 
     // Add new element to projectBaseElement's parent
 

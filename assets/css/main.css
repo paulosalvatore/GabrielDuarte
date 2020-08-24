@@ -2441,15 +2441,19 @@ input[type="radio"] + label:before {
     position: relative;
 }
 
+.image .project__image,
 .image img {
     border-radius: 4px;
     display: block;
+    height: 300px;
+    background-position: center;
 }
 
 .image.left, .image.right {
     max-width: 40%;
 }
 
+.image.left .project__image, .image.right .project__image,
 .image.left img, .image.right img {
     width: 100%;
 }
@@ -2472,7 +2476,8 @@ input[type="radio"] + label:before {
     width: 100%;
 }
 
-.image.fit img {
+.image.fit .project__image,
+.image.fit img, {
     width: 100%;
 }
 
@@ -2722,7 +2727,7 @@ button:disabled,
     overflow: hidden;
 }
 
-.tiles article > .image img {
+.tiles article > .image .project__image {
     display: block;
     width: 100%;
 }
