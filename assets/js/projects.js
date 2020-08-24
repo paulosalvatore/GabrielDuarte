@@ -2,7 +2,7 @@
 
 const visibleTagsAmount = 3;
 
-const mediaBaseUrl = 'https://github.com/paulosalvatore/GabrielDuarte/raw/master/media/';
+const mediaBaseUrl = 'https://github.com/paulosalvatore/GabrielDuarte/raw/master/media';
 
 // Load JSON data
 
@@ -145,6 +145,11 @@ const projectShareLink = $('.project__share_link');
 const videoButton = $('#media_video_button');
 const audioButton = $('#media_audio_button');
 
+const loadMediaUrl = (project, mediaType) => {
+    const fileExtension = mediaType === 'VIDEO' ? 'mp4' : 'mp3';
+    return `${mediaBaseUrl}/${mediaType.toLowerCase()}/${project.id}.${fileExtension}`;
+};
+
 const loadEvents = function () {
     // Modal display
 
@@ -192,11 +197,14 @@ const loadEvents = function () {
             videoButton.show();
             audioButton.show();
 
-            // videoButton.
+            videoButton.attr('href', loadMediaUrl(project, 'VIDEO'));
+            audioButton.attr('href', loadMediaUrl(project, 'AUDIO'));
         } else if (project.tipo === 'AUDIO') {
             // Only audio button should be visible
             videoButton.hide();
             audioButton.show();
+
+            audioButton.attr('href', loadMediaUrl(project, 'AUDIO'));
         }
 
         // Display modal and hide body's overflow
