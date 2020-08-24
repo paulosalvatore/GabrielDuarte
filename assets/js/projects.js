@@ -119,7 +119,6 @@ const createProjectElement = (project, index) => {
     projectTagBase.remove();
 
     // Add new element to projectBaseElement's parent
-
     projectBaseElement.parent().append(cloneElement);
 };
 
@@ -146,7 +145,6 @@ const loadEvents = function (){
 
 const loadAutocomplete = () => {
     // Search Autocomplete
-
     const tags = Array.from(new Set(projects.map(project => project.tags).flat()));
 
     const searchInput = $('.search');
