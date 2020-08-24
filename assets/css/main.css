@@ -2833,30 +2833,6 @@ button:disabled,
     margin-bottom: 0;
 }
 
-.tiles article.style1 > .image:before {
-    background-color: #628395;
-}
-
-.tiles article.style2 > .image:before {
-    background-color: #96897B;
-}
-
-.tiles article.style3 > .image:before {
-    background-color: #DFD5A5;
-}
-
-.tiles article.style4 > .image:before {
-    background-color: #DBAD6A;
-}
-
-.tiles article.style5 > .image:before {
-    background-color: #E3C3A1;
-}
-
-.tiles article.style6 > .image:before {
-    background-color: #FFE6E8;
-}
-
 body:not(.is-touch) .tiles article:hover > .image {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
