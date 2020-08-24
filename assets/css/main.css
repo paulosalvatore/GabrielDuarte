@@ -2161,7 +2161,6 @@ ul.icons {
     cursor: default;
     list-style: none;
     padding-left: 0;
-    margin: -0.5em;
 }
 
 ul.icons li {
@@ -2169,7 +2168,7 @@ ul.icons li {
     padding: 0.5em 0.2em;
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 360px) {
     ul.icons li {
         padding: 0.5em 0em;
     }
