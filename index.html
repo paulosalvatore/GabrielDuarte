@@ -38,12 +38,15 @@
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
 
-        <button class="project__button share_link"><span class="fa fa-share"></span> Compartilhar Link</button>
-        <button class="project__button"><span class="fa fa-download"></span> Baixar Áudio</button>
-        <button class="project__button"><span class="fa fa-download"></span> Baixar Vídeo</button>
+        <div class="project__share_buttons">
+            <a class="button project__button share_link"><span class="fa fa-share"></span> Compartilhar Link</a>
+            <a id="media_video_button" class="button project__button"><span class="fa fa-download"></span> Baixar Vídeo</a>
+            <a id="media_audio_button" class="button project__button"><span class="fa fa-download"></span> Baixar Áudio</a>
+        </div>
 
         <div class="project__share_link">
-            <input type="text" class="project__share_link_url"
+            <input type="text"
+                   class="project__share_link_url"
                    value="http://127.0.0.1/GabrielDuarte/#projeto_NOME_PROJETO"/>
 
             <div class="project__share_link_copy"

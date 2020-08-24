@@ -1,27 +1,14 @@
-/*
-https://youtu.be/nK0L51DUf9I
-https://www.youtube.com/watch?v=nK0L51DUf9I&feature=youtu.be
+// Configuration
 
-Extrair ID: nK0L51DUf9I
+const visibleTagsAmount = 3;
 
-Transformar em: https://www.youtube.com/embed/{video_id}
-*/
-
-/*
-// Funcionamento
-- Quando tem vídeo:
-Pode baixar só o áudio e só o vídeo
-- Quando só tem áudio:
-Download só do áudio
-*/
+const mediaBaseUrl = 'https://github.com/paulosalvatore/GabrielDuarte/raw/master/media/';
 
 // Load JSON data
 
 let projects = [];
 let colors = [];
 let tags = [];
-
-const visibleTagsAmount = 3;
 
 const createColorsClasses = () => {
     const style = document.createElement('style');
@@ -147,23 +134,34 @@ const createProjectElement = (project, index) => {
 
 // HTML Elements
 const projectDetailsModal = $('#projectDetails');
+
 const youtubeIframe = $('#youtube_iframe');
 const youtubeIframeWrapper = $('#youtube_iframe_wrapper');
+
 const soundcloudIframeWrapper = $('#soundcloud_iframe_wrapper');
+
 const projectShareLink = $('.project__share_link');
+
+const videoButton = $('#media_video_button');
+const audioButton = $('#media_audio_button');
 
 const loadEvents = function () {
     // Modal display
 
     $('.project .link').on('click', function () {
+        // Load Project
         const projectIndex = $(this).closest('.project').data('project');
         const project = projects[projectIndex];
 
+        // Reset iframe's visibility and content to force them to reload
+
         youtubeIframeWrapper.hide();
-        youtubeIframeWrapper.html("");
+        youtubeIframeWrapper.html('');
 
         soundcloudIframeWrapper.hide();
-        soundcloudIframeWrapper.html("");
+        soundcloudIframeWrapper.html('');
+
+        // Load iframe for YouTube or SoundCloud
 
         if (project.tipo === 'VIDEO' && project.youtube) {
             const iframe = youtubeIframe.clone();
@@ -175,10 +173,33 @@ const loadEvents = function () {
             soundcloudIframeWrapper.show();
         }
 
+        // Update URL input
+
         const urlInput = $('.project__share_link_url');
         urlInput.val(getProjectUrl(project));
 
+        // Hide share link by default
+
         projectShareLink.hide();
+
+        // Set download's button URL for audio and video files
+
+        videoButton.hide();
+        audioButton.hide();
+
+        if (project.tipo === 'VIDEO') {
+            // Both buttons should be visible
+            videoButton.show();
+            audioButton.show();
+
+            // videoButton.
+        } else if (project.tipo === 'AUDIO') {
+            // Only audio button should be visible
+            videoButton.hide();
+            audioButton.show();
+        }
+
+        // Display modal and hide body's overflow
 
         projectDetailsModal.show();
 

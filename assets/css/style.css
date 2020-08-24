@@ -21,8 +21,11 @@
     }
 }
 
+.project__share_buttons {
+    margin-top: 10px;
+}
+
 .project__share_link {
-    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
