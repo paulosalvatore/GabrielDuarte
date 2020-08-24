@@ -32,7 +32,7 @@ $(function () {
 
     const body = $('body');
 
-    $('.project .link').on('click', (event) => {
+    $('.project .link').on('click', () => {
         projectShareLink.hide();
 
         projectDetailsModal.fadeIn();
