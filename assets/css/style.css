@@ -1,0 +1,40 @@
+.hide {
+    display: none !important;
+}
+
+.project__button {
+    margin: 0 5px;
+    text-transform: none;
+    letter-spacing: inherit;
+    height: 30px;
+    line-height: 30px;
+    font-weight: normal;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: inset 0 0 0 1px #585858;
+}
+
+.project__share_link {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    max-width: 100%;
+    background: #fafafa;
+    border: 1px solid #ededed;
+    border-radius: 5px;
+}
+
+.project__share_link .project__share_link_copy {
+    text-transform: uppercase;
+    color: #065fd4;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.project__share_link input[type="text"].project__share_link_url {
+    width: 500px;
+    max-width: 100%;
+}
