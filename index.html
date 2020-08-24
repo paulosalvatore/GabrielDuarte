@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link rel="stylesheet" href="assets/css/modal.css"/>
     <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="assets/css/autocomplete.css"/>
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
@@ -97,13 +98,17 @@
         <div class="inner">
             <form method="post" action="#">
                 <span class="icon solid style2 fa-search label"></span>
-                <input class="search-mobile" type="text" name="name"
+                <input class="search search-mobile" type="text" name="search_autocomplete_project"
                        placeholder="Busque por cliente, mood etc"/>
 
-                <input class="search-desktop" type="text" name="name"
+                <input class="search search-desktop" type="text" name="search_autocomplete_project"
                        placeholder="Busque por cliente, mood, interpretação, tipo da peça etc."/>
                 <input type="submit" value="buscar" class="primary"/>
             </form>
+
+            <div class="autocomplete">
+                <div id="autocomplete-list" class="autocomplete-items"></div>
+            </div>
 
             <section class="tiles">
 
@@ -330,6 +335,7 @@
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/modal.js"></script>
+<script src="assets/js/autocomplete.js"></script>
 <script src="assets/js/script.js"></script>
 
 <script src="assets/js/popper.min.js"
