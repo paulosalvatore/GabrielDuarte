@@ -68,7 +68,9 @@ $(function () {
 
     const shareLinkCopy = $('.project__share_link_copy');
 
-    shareLinkCopy.popover();
+    shareLinkCopy.popover({
+        trigger: 'focus'
+    });
 
     shareLinkCopy.on('click', function () {
         selectUrlInput();
