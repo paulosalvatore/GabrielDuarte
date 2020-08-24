@@ -66,7 +66,11 @@ $(function () {
         }
     });
 
-    $('.project__share_link_copy').on('click', function () {
+    const shareLinkCopy = $('.project__share_link_copy');
+
+    shareLinkCopy.popover();
+
+    shareLinkCopy.on('click', function () {
         selectUrlInput();
 
         document.execCommand('copy'); // Copy the text inside the text field

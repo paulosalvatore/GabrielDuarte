@@ -38,3 +38,17 @@
     width: 500px;
     max-width: 100%;
 }
+
+.popover-body {
+    background: #323232;
+    color: #f1f1f1;
+    box-shadow: 1px 1px 5px 1px #323232;
+}
+
+.bs-popover-auto[x-placement^=right] .arrow::after, .bs-popover-right .arrow::after {
+    border-right-color: #323232;
+}
+
+.bs-popover-auto[x-placement^=left] .arrow::after, .bs-popover-left .arrow::after {
+    border-left-color: #323232;
+}

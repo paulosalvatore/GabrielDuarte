@@ -7,6 +7,7 @@
     <title>Phantom by HTML5 UP</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/popover.css"/>
     <link rel="stylesheet" href="assets/css/main.css"/>
     <link rel="stylesheet" href="assets/css/modal.css"/>
     <link rel="stylesheet" href="assets/css/style.css"/>
@@ -19,7 +20,7 @@
 <div id="projectDetails" class="modal">
 
     <div class="modal-content" align="center">
-<!--        <span class="close">&times;</span>-->
+        <!--        <span class="close">&times;</span>-->
 
         <!--<h1>Título</h1>
         <h2>Subtítulo</h2>-->
@@ -44,9 +45,15 @@
         <button class="project__button"><span class="fa fa-download"></span> Baixar Vídeo</button>
 
         <div class="project__share_link">
-            <input type="text" class="project__share_link_url" value="http://127.0.0.1/GabrielDuarte/#projeto_NOME_PROJETO"/>
+            <input type="text" class="project__share_link_url"
+                   value="http://127.0.0.1/GabrielDuarte/#projeto_NOME_PROJETO"/>
 
-            <div class="project__share_link_copy">
+            <div class="project__share_link_copy"
+                 data-container="body"
+                 data-toggle="popover"
+                 data-placement="right"
+                 data-offset="0 10"
+                 data-content="Link copiado para a área de transferência.">
                 Copiar
             </div>
         </div>
@@ -323,6 +330,14 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/modal.js"></script>
 <script src="assets/js/script.js"></script>
+
+<script src="assets/js/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+<script src="assets/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
