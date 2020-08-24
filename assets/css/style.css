@@ -49,6 +49,13 @@ input[type="text"] {
     margin: 0 8px;
 }
 
+#soundcloud_iframe_wrapper,
+#youtube_iframe_wrapper,
+#youtube_iframe,
 #project_base {
     display: none;
+}
+
+#youtube_iframe_wrapper > iframe {
+    display: block;
 }

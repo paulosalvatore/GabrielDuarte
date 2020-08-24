@@ -56,7 +56,7 @@ $.getJSON('data/tags.json', data => {
 
 const projectBaseElement = $('#project_base');
 
-const loadYouTubeImage = project => {
+function getYouTubeVideoId(project) {
     let videoId = undefined;
 
     if (project.youtube) {
@@ -65,7 +65,19 @@ const loadYouTubeImage = project => {
         videoId = url.pathname.includes('watch') ? url.searchParams.get('v') : url.pathname.slice(1);
     }
 
+    return videoId;
+}
+
+const getYouTubeImageUrl = project => {
+    const videoId = getYouTubeVideoId(project);
+
     return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+};
+
+const getYouTubeIframeUrl = project => {
+    const videoId = getYouTubeVideoId(project);
+
+    return `https://www.youtube.com/embed/${videoId}`;
 };
 
 const clearUrl = text => encodeURIComponent(text.replace(/ /g, '_'));
@@ -85,7 +97,7 @@ const createProjectElement = (project, index) => {
 
     // Change image
 
-    const imageUrl = project.imagem || loadYouTubeImage(project);
+    const imageUrl = project.imagem || getYouTubeImageUrl(project);
     const imageElement = projectElement.find('.image');
 
     imageElement.find('.project__image').css('background-image', `url('${imageUrl}')`);
@@ -129,17 +141,35 @@ const createProjectElement = (project, index) => {
     projectBaseElement.parent().append(projectElement);
 };
 
-const loadEvents = function () {
-    // Project Share Link
-    const projectShareLink = $('.project__share_link');
+// HTML Elements
+const projectDetailsModal = $('#projectDetails');
+const youtubeIframe = $('#youtube_iframe');
+const youtubeIframeWrapper = $('#youtube_iframe_wrapper');
+const soundcloudIframeWrapper = $('#soundcloud_iframe_wrapper');
+const projectShareLink = $('.project__share_link');
 
+const loadEvents = function () {
     // Modal display
-    const projectDetailsModal = $('#projectDetails');
 
     $('.project .link').on('click', function () {
         const projectIndex = $(this).closest('.project').data('project');
         const project = projects[projectIndex];
-        console.log(project);
+
+        youtubeIframeWrapper.hide();
+        youtubeIframeWrapper.html("");
+
+        soundcloudIframeWrapper.hide();
+        soundcloudIframeWrapper.html("");
+
+        if (project.tipo === 'VIDEO' && project.youtube) {
+            const iframe = youtubeIframe.clone();
+            iframe.attr('src', getYouTubeIframeUrl(project));
+            youtubeIframeWrapper.append(iframe);
+            youtubeIframeWrapper.show();
+        } else if (project.tipo === 'AUDIO' && project.soundcloud) {
+            soundcloudIframeWrapper.html(project.soundcloud);
+            soundcloudIframeWrapper.show();
+        }
 
         projectShareLink.hide();
 
