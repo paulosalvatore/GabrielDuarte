@@ -23,22 +23,24 @@ const moveTo = (
 };
 
 $(function () {
+    // Project Share Link
+
+    const projectShareLink = $('.project__share_link');
+
     // Modal display
     const projectDetailsModal = $('#projectDetails');
 
     const body = $('body');
 
-    $('.project .link').on('click', function () {
-        projectDetailsModal.show();
+    $('.project .link').on('click', (event) => {
+        projectShareLink.hide();
+
+        projectDetailsModal.fadeIn();
 
         body.css('overflow', 'hidden');
     });
 
     // Button Share Link
-
-    const projectShareLink = $('.project__share_link');
-
-    projectShareLink.hide();
 
     const urlInput = $('.project__share_link_url');
 
@@ -70,7 +72,7 @@ $(function () {
 
     shareLinkCopy.popover();
 
-    $('body, html').on('click', () => {
+    body.on('click', () => {
         shareLinkCopy.popover('hide');
     });
 

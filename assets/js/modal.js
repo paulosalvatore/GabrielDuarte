@@ -1,13 +1,13 @@
 // Get the body
-const body = document.getElementsByTagName('body')[0];
+const body = $('body');
 
 // Get the modal
-const modal = document.getElementById('projectDetails');
+const modal = $('#projectDetails');
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-        body.style.overflow = 'auto';
+body.on('click', event => {
+    if (event.target === modal[0]) {
+        modal.fadeOut();
+        body.css('overflow', auto);
     }
-}
+});
