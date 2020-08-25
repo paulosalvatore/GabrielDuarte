@@ -171,6 +171,12 @@ article {
     transition: transform 0.2s;
 }
 
+@media screen and (max-width: 600px) {
+    .tag {
+        width: 80%;
+    }
+}
+
 .tag:hover {
     background: #065fd4;
     color: white !important;
@@ -2909,7 +2915,7 @@ body.is-touch .tiles article .content {
 @media screen and (max-width: 736px) {
 
     .tiles article {
-        width: calc(50% - 1.25em);
+        width: calc(100% - 1.25em);
     }
 
     .tiles article:hover > .image {
