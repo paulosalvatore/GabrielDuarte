@@ -16,7 +16,7 @@
 
 .chip:focus {
     outline: none;
-    background-color: #26a69a;
+    background-color: #065fd4;
     color: #fff
 }
 
@@ -136,7 +136,7 @@
 .dropdown-content li > a,
 .dropdown-content li > span {
     font-size: 16px;
-    color: #26a69a;
+    color: #065fd4;
     display: block;
     line-height: 22px;
     padding: 14px 16px
