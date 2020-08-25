@@ -42,9 +42,24 @@ $.getJSON('data/tags.json', data => {
     dataReady();
 });
 
+// HTML Elements
 const projectBaseElement = $('#project_base');
 
-function getYouTubeVideoId(project) {
+const projectDetailsModal = $('#project_details');
+
+const youtubeIframe = $('#youtube_iframe');
+const youtubeIframeWrapper = $('#youtube_iframe_wrapper');
+
+const soundcloudIframeWrapper = $('#soundcloud_iframe_wrapper');
+
+const projectShareLink = $('.project__share_link');
+
+const videoButton = $('#media_video_button');
+const audioButton = $('#media_audio_button');
+
+// YouTube helpers
+
+const getYouTubeVideoId = project => {
     let videoId = undefined;
 
     if (project.youtube) {
@@ -54,7 +69,7 @@ function getYouTubeVideoId(project) {
     }
 
     return videoId;
-}
+};
 
 const getYouTubeImageUrl = project => {
     const videoId = getYouTubeVideoId(project);
@@ -68,12 +83,127 @@ const getYouTubeIframeUrl = project => {
     return `https://www.youtube.com/embed/${videoId}`;
 };
 
+// URL Helpers
+
 const clearUrl = text => encodeURIComponent(text.replace(/ /g, '_'));
+
+const invertClearUrl = url => decodeURIComponent(url).replace(/_/g, ' ');
 
 const getProjectUrl = project => {
     const pageUrl = new URL(document.URL);
 
     return `${pageUrl.origin}${pageUrl.pathname}#projeto_${clearUrl(project.id)}`;
+};
+
+// Media
+
+const loadMediaUrl = (project, mediaType) => {
+    const fileExtension = mediaType === 'VIDEO' ? 'mp4' : 'mp3';
+    return `${mediaBaseUrl}/${mediaType.toLowerCase()}/${project.id}.${fileExtension}`;
+};
+
+const downloadAudio = (project) => {
+    const url = loadMediaUrl(project, 'AUDIO');
+
+    const x = new XMLHttpRequest();
+    x.open('GET', getProxyUrl(url), true);
+    x.responseType = 'blob';
+
+    x.onload = () => {
+        if (x.response.type === 'audio/mpeg') {
+            download(x.response, `${project.id}.mp3`, 'audio/mpeg');
+        }
+    };
+
+    x.send();
+};
+
+const downloadVideo = project => {
+    const url = loadMediaUrl(project, 'VIDEO');
+
+    $.fileDownload(url);
+};
+
+// Modal
+
+let modalProject;
+
+const showModal = project => {
+    if (modalProject !== project) {
+        modalProject = project;
+
+        // Reset iframe's visibility and content to force them to reload
+
+        youtubeIframeWrapper.hide();
+        youtubeIframeWrapper.html('');
+
+        soundcloudIframeWrapper.hide();
+        soundcloudIframeWrapper.html('');
+
+        // Load iframe for YouTube or SoundCloud
+
+        if (project.tipo === 'VIDEO' && project.youtube) {
+            const iframe = youtubeIframe.clone();
+            iframe.attr('src', getYouTubeIframeUrl(project));
+            youtubeIframeWrapper.append(iframe);
+            youtubeIframeWrapper.show();
+        } else if (project.tipo === 'AUDIO' && project.soundcloud) {
+            soundcloudIframeWrapper.html(project.soundcloud);
+            soundcloudIframeWrapper.show();
+        }
+
+        // Update URL input
+
+        const urlInput = $('.project__share_link_url');
+        urlInput.val(getProjectUrl(project));
+
+        // Hide share link by default
+
+        projectShareLink.hide();
+
+        // Set download's button URL for audio and video files
+
+        videoButton.hide();
+        audioButton.hide();
+
+        if (project.tipo === 'VIDEO') {
+            // Both buttons should be visible
+            videoButton.show();
+            audioButton.show();
+
+            videoButton.unbind().on('click', () => {
+                downloadVideo(project);
+            });
+
+            audioButton.unbind().on('click', () => {
+                downloadAudio(project);
+            });
+        } else if (project.tipo === 'AUDIO') {
+            // Only audio button should be visible
+            videoButton.hide();
+            audioButton.show();
+
+            audioButton.unbind().on('click', () => {
+                downloadAudio(project);
+            });
+        }
+    }
+
+    // Display modal and hide body's overflow
+
+    projectDetailsModal.show();
+
+    $('body').css('overflow', 'hidden');
+};
+
+// Projects Elements
+
+const createProjectsElements = projects => {
+    projects.forEach(createProjectElement);
+
+    loadEvents();
+
+    loadAutocomplete();
 };
 
 const createProjectElement = (project, index) => {
@@ -139,48 +269,6 @@ const createProjectElement = (project, index) => {
     projectBaseElement.parent().append(projectElement);
 };
 
-// HTML Elements
-const projectDetailsModal = $('#projectDetails');
-
-const youtubeIframe = $('#youtube_iframe');
-const youtubeIframeWrapper = $('#youtube_iframe_wrapper');
-
-const soundcloudIframeWrapper = $('#soundcloud_iframe_wrapper');
-
-const projectShareLink = $('.project__share_link');
-
-const videoButton = $('#media_video_button');
-const audioButton = $('#media_audio_button');
-
-const loadMediaUrl = (project, mediaType) => {
-    const fileExtension = mediaType === 'VIDEO' ? 'mp4' : 'mp3';
-    return `${mediaBaseUrl}/${mediaType.toLowerCase()}/${project.id}.${fileExtension}`;
-};
-
-const downloadAudio = (project) => {
-    const url = loadMediaUrl(project, 'AUDIO');
-
-    const x = new XMLHttpRequest();
-    x.open('GET', getProxyUrl(url), true);
-    x.responseType = 'blob';
-
-    x.onload = () => {
-        if (x.response.type === 'audio/mpeg') {
-            download(x.response, `${project.id}.mp3`, 'audio/mpeg');
-        }
-    };
-
-    x.send();
-};
-
-const downloadVideo = project => {
-    const url = loadMediaUrl(project, 'VIDEO');
-
-    $.fileDownload(url);
-};
-
-let modalProject;
-
 const loadEvents = function () {
     // Modal display
 
@@ -189,71 +277,7 @@ const loadEvents = function () {
         const projectIndex = $(this).closest('.project').data('project');
         const project = projects[projectIndex];
 
-        if (modalProject !== project) {
-            modalProject = project;
-
-            // Reset iframe's visibility and content to force them to reload
-
-            youtubeIframeWrapper.hide();
-            youtubeIframeWrapper.html('');
-
-            soundcloudIframeWrapper.hide();
-            soundcloudIframeWrapper.html('');
-
-            // Load iframe for YouTube or SoundCloud
-
-            if (project.tipo === 'VIDEO' && project.youtube) {
-                const iframe = youtubeIframe.clone();
-                iframe.attr('src', getYouTubeIframeUrl(project));
-                youtubeIframeWrapper.append(iframe);
-                youtubeIframeWrapper.show();
-            } else if (project.tipo === 'AUDIO' && project.soundcloud) {
-                soundcloudIframeWrapper.html(project.soundcloud);
-                soundcloudIframeWrapper.show();
-            }
-
-            // Update URL input
-
-            const urlInput = $('.project__share_link_url');
-            urlInput.val(getProjectUrl(project));
-
-            // Hide share link by default
-
-            projectShareLink.hide();
-
-            // Set download's button URL for audio and video files
-
-            videoButton.hide();
-            audioButton.hide();
-
-            if (project.tipo === 'VIDEO') {
-                // Both buttons should be visible
-                videoButton.show();
-                audioButton.show();
-
-                videoButton.unbind().on('click', () => {
-                    downloadVideo(project);
-                });
-
-                audioButton.unbind().on('click', () => {
-                    downloadAudio(project);
-                });
-            } else if (project.tipo === 'AUDIO') {
-                // Only audio button should be visible
-                videoButton.hide();
-                audioButton.show();
-
-                audioButton.unbind().on('click', () => {
-                    downloadAudio(project);
-                });
-            }
-        }
-
-        // Display modal and hide body's overflow
-
-        projectDetailsModal.show();
-
-        $('body').css('overflow', 'hidden');
+        showModal(project);
     });
 };
 
@@ -268,13 +292,7 @@ const loadAutocomplete = () => {
     });
 };
 
-const createProjectElements = projects => {
-    projects.forEach(createProjectElement);
-
-    loadEvents();
-
-    loadAutocomplete();
-};
+// Data Ready
 
 const dataReady = () => {
     if (!projects.length
@@ -283,5 +301,5 @@ const dataReady = () => {
         return;
     }
 
-    createProjectElements(projects);
+    createProjectsElements(projects);
 };
