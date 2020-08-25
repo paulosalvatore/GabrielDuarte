@@ -72,6 +72,7 @@ const clearUrl = text => encodeURIComponent(text.replace(/ /g, '_'));
 
 const getProjectUrl = project => {
     const pageUrl = new URL(document.URL);
+
     return `${pageUrl.origin}${pageUrl.pathname}#projeto_${clearUrl(project.id)}`;
 };
 
