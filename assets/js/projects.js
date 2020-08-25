@@ -263,7 +263,7 @@ const createProjectElement = (project, index) => {
 
     // Link
     const link = getProjectUrl(project);
-    projectElement.find('a').attr('href', link);
+    projectElement.find('.link').attr('href', link);
 
     // Update visibility based on 'project.principal' value
     if (!project.principal) {
@@ -349,14 +349,12 @@ const loadAutocomplete = () => {
         if (tags.length) {
             const foundProjects = projects.reduce((acc, project, i, arr) => {
                 const foundTag =
-                    project.tags
-                        .some(projectTag =>
-                            tags.some(tag =>
-                                clearString(projectTag).includes(clearString(tag))
-                            )
-                        );
+                    tags.every(tag =>
+                        project.tags.some(projectTag =>
+                            clearString(projectTag).includes(clearString(tag))));
 
-                const foundTitulo = tags.some(tag => clearString(project.titulo).includes(clearString(tag)));
+                const foundTitulo =
+                    tags.some(tag => clearString(project.titulo).includes(clearString(tag)));
 
                 const foundSubtitulo =
                     project.subtitulo
@@ -380,7 +378,7 @@ const loadAutocomplete = () => {
     };
 
     $('.project-search .chips-autocomplete').chips({
-        placeholder: 'Busque por cliente, mood, interpretação, tipo da peça etc.',
+        placeholder: 'Cliente, mood etc.',
         autocompleteOptions: {
             data: tagsObj,
             limit: Infinity,
