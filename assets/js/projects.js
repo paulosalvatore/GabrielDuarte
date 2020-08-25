@@ -369,13 +369,15 @@ const loadAutocomplete = () => {
 
         // Load chips and get all tags
         const chips = getChipsInstance();
-        const tags = chips.chipsData.map(chip => chip.tag.split(' ')).flat();
+        const tags = chips.chipsData.map(chip => chip.tag);
+
+        const splitTags = tags.map(tag => tag.split(' ')).flat();
 
         // Load tag aliases
         tagsAlias
-            .filter(tagAlias => tagAlias.alias.some(alias => tags.map(clearString).includes(clearString(alias))))
+            .filter(tagAlias => tagAlias.alias.some(alias => splitTags.map(clearString).includes(clearString(alias))))
             .forEach(tagAlias => {
-                if (!tags.includes(tagAlias.nome)) {
+                if (!splitTags.includes(tagAlias.nome)) {
                     tags.push(tagAlias.nome);
                 }
             });
@@ -390,16 +392,16 @@ const loadAutocomplete = () => {
 
             const foundProjects = projects.reduce((acc, project, i, arr) => {
                 const foundTag =
-                    tags.every(tag =>
+                    splitTags.every(tag =>
                         project.tags.some(projectTag =>
                             clearString(projectTag).includes(clearString(tag))));
 
                 const foundTitulo =
-                    tags.some(tag => clearString(project.titulo).includes(clearString(tag)));
+                    splitTags.some(tag => clearString(project.titulo).includes(clearString(tag)));
 
                 const foundSubtitulo =
                     project.subtitulo
-                    && tags.some(tag => clearString(project.subtitulo).includes(clearString(tag)));
+                    && splitTags.some(tag => clearString(project.subtitulo).includes(clearString(tag)));
 
                 if (foundTag || foundTitulo || foundSubtitulo) {
                     acc.push(project);
