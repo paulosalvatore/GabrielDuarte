@@ -529,10 +529,4 @@ const dataReady = () => {
     window.onpopstate = () => {
         loadCurrentUrl(true);
     }
-
-    // When window is resized, we should reload autocomplete because chips' placeholder
-    // changes based on screen's width
-    $(window).on('resize', () => {
-        loadAutocomplete();
-    });
 };
