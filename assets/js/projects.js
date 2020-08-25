@@ -9,7 +9,7 @@ const getProxyUrl = url => `https://cors-anywhere.herokuapp.com/${url}`;
 
 let projects = [];
 let colors = [];
-let tags = [];
+let tagsAlias = [];
 
 const createColorsClasses = () => {
     const style = document.createElement('style');
@@ -37,7 +37,7 @@ $.getJSON('data/projects.json', data => {
 });
 
 $.getJSON('data/tags.json', data => {
-    tags = data;
+    tagsAlias = data;
 
     dataReady();
 });
@@ -56,6 +56,8 @@ const projectShareLink = $('.project__share_link');
 
 const videoButton = $('#media_video_button');
 const audioButton = $('#media_audio_button');
+
+let projectsElements;
 
 // YouTube helpers
 
@@ -205,6 +207,8 @@ const showModal = project => {
 const createProjectsElements = projects => {
     projects.forEach(createProjectElement);
 
+    projectsElements = $('.project');
+
     loadEvents();
 
     loadAutocomplete();
@@ -218,10 +222,7 @@ const createProjectElement = (project, index) => {
     projectElement.removeAttr('id');
 
     // Set data-project based on index
-    projectElement.data('project', index);
-
-    // Add element's class based on index
-    projectElement.addClass('style_' + index);
+    projectElement.data('project', clearUrl(project.id));
 
     // Change image
 
@@ -285,22 +286,108 @@ const loadEvents = function () {
     });
 };
 
+// String Helper
+
+const clearString = tag => tag.toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+
+// Projects Helpers
+
+const findByData = (elements, key, value) =>
+    Array.from(elements).reduce((acc, curr) => {
+        if ($(curr).data(key) === value) {
+            acc.push(curr);
+        }
+
+        return acc;
+    }, []);
+
+const findProjectsElements = projects => projects.map(project => findByData(projectsElements, 'project', clearUrl(project.id))[0]);
+
+const updateProjectsElementsColor = function () {
+    // Hide all projects' elements
+    projectsElements.attr('class', 'project');
+
+    // Add elements' classes based on index, to add sequential colors to them
+    $('.project:visible').each(function (index) {
+        $(this).addClass('style_' + index % colors.length);
+    });
+};
+
 const loadAutocomplete = () => {
     // Load unique tags based on projects list
     const tags = Array.from(new Set(projects.map(project => project.tags).flat()));
 
     // Convert tags array into an object based on 'chips' data format
-    const tagsObj = {};
-    tags.forEach(tag => tagsObj[tag] = null);
+    const tagsObj = tags.reduce((acc, curr) => {
+        acc[curr] = null;
+
+        return acc;
+    }, {});
 
     // Load materialize's chips
+    const updateSearch = () => {
+        // Load chips and get all tags
+        const chips = M.Chips.getInstance($('.chips'));
+        const tags = chips.chipsData.map(chip => chip.tag);
+
+        // Load tag aliases
+        tagsAlias
+            .filter(tagAlias => tagAlias.alias.some(alias => tags.map(clearString).includes(clearString(alias))))
+            .forEach(tagAlias => {
+                if (!tags.includes(tagAlias.nome)) {
+                    tags.push(tagAlias.nome);
+                }
+            });
+
+        // Hide all elements
+        projectsElements.hide();
+
+        // If user has type a tag, find specific projects
+        // Otherwhise, display all main projects
+        if (tags.length) {
+            const foundProjects = projects.reduce((acc, project, i, arr) => {
+                const foundTag =
+                    project.tags
+                        .some(projectTag =>
+                            tags.some(tag =>
+                                clearString(projectTag).includes(clearString(tag))
+                            )
+                        );
+
+                const foundTitulo = tags.some(tag => clearString(project.titulo).includes(clearString(tag)));
+
+                const foundSubtitulo =
+                    project.subtitulo
+                    && tags.some(tag => clearString(project.subtitulo).includes(clearString(tag)));
+
+                if (foundTag || foundTitulo || foundSubtitulo) {
+                    acc.push(project);
+                }
+
+                return acc;
+            }, []);
+
+            findProjectsElements(foundProjects).forEach(element => $(element).show());
+        } else {
+            const mainProjects = projects.filter(project => project.principal);
+
+            findProjectsElements(mainProjects).forEach(element => $(element).show());
+        }
+
+        updateProjectsElementsColor();
+    };
+
     $('.project-search .chips-autocomplete').chips({
         placeholder: 'Busque por cliente, mood, interpretação, tipo da peça etc.',
         autocompleteOptions: {
             data: tagsObj,
             limit: Infinity,
             minLength: 1
-        }
+        },
+        onChipAdd: updateSearch,
+        onChipDelete: updateSearch
     });
 };
 
@@ -325,11 +412,13 @@ const loadCurrentUrl = (popped) => {
 const dataReady = () => {
     if (!projects.length
         || !colors.length
-        || !tags.length) {
+        || !tagsAlias.length) {
         return;
     }
 
     createProjectsElements(projects);
+
+    updateProjectsElementsColor();
 
     loadCurrentUrl();
 

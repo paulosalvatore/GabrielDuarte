@@ -1,7 +1,9 @@
 [
   {
     "nome": "Banco",
-    "alias": []
+    "alias": [
+      "Banko"
+    ]
   },
   {
     "nome": "Farmacêutico",

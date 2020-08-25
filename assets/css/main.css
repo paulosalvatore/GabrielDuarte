@@ -2732,10 +2732,10 @@ button:disabled,
 
 .tiles article > .image:before {
     pointer-events: none;
-    -moz-transition: background-color 0.5s ease, opacity 0.5s ease;
-    -webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
-    -ms-transition: background-color 0.5s ease, opacity 0.5s ease;
-    transition: background-color 0.5s ease, opacity 0.5s ease;
+    /*-moz-transition: background-color 0.5s ease, opacity 0.5s ease;*/
+    /*-webkit-transition: background-color 0.5s ease, opacity 0.5s ease;*/
+    /*-ms-transition: background-color 0.5s ease, opacity 0.5s ease;*/
+    /*transition: background-color 0.5s ease, opacity 0.5s ease;*/
     content: '';
     display: block;
     position: absolute;
