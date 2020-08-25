@@ -222,6 +222,7 @@ ul:not(.browser-default) > li {
 
 .project-search .chips.chips-autocomplete .input {
     width: 375px !important;
+    max-width: 160px;
 }
 
 .project-search .chips.chips-autocomplete {
