@@ -53,6 +53,8 @@ const youtubeIframeWrapper = $('#youtube_iframe_wrapper');
 const soundcloudIframeWrapper = $('#soundcloud_iframe_wrapper');
 
 const projectShareLink = $('.project__share_link');
+const searchShareWrapper = $('.project-share-search-wrapper');
+const searchUrlInput = $('.project__search_share_link_url');
 
 const videoButton = $('#media_video_button');
 const audioButton = $('#media_audio_button');
@@ -226,19 +228,21 @@ const createProjectElement = (project, index) => {
     // Try to load image high res
 
     if (!project.imagem) {
-        const highResImageUrl = getYouTubeImageUrl(project, true);
+        setTimeout(() => {
+            const highResImageUrl = getYouTubeImageUrl(project, true);
 
-        const img = new Image();
+            const img = new Image();
 
-        img.onload = () => {
-            if (img.width > 480) {
-                imageElement
-                    .find('.project__image')
-                    .css('background-image', `url('${highResImageUrl}')`);
-            }
-        };
+            img.onload = () => {
+                if (img.width > 480) {
+                    imageElement
+                        .find('.project__image')
+                        .css('background-image', `url('${highResImageUrl}')`);
+                }
+            };
 
-        img.src = highResImageUrl;
+            img.src = highResImageUrl;
+        }, 100);
     }
 
     // Title and subtitle
@@ -318,8 +322,9 @@ const getProjectUrl = project => {
 
 // String Helper
 
-const clearString = tag => tag.toLowerCase()
-    .normalize('NFD')
+const clearString = tag => clearAccent(tag.toLowerCase());
+
+const clearAccent = tag => tag.normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
 
 // Projects Helpers
@@ -381,6 +386,8 @@ const loadAutocomplete = () => {
         // If user has type a tag, find specific projects
         // Otherwhise, display all main projects
         if (tags.length) {
+            searchShareWrapper.show();
+
             const foundProjects = projects.reduce((acc, project, i, arr) => {
                 const foundTag =
                     tags.every(tag =>
@@ -401,22 +408,33 @@ const loadAutocomplete = () => {
                 return acc;
             }, []);
 
+            // Load search url
+            const tagsHash = tags.map(clearAccent).map(clearUrl).join('&');
+            const url = new URL(document.URL);
+            const searchUrl = `${url.origin}${url.pathname}#busca_${tagsHash}`;
+
+            // Update search url input
+            searchUrlInput.val(searchUrl);
+
             if (!globalPopped) {
                 // Push a new state to history with a hash based on search input
-                const tagsHash = tags.map(clearUrl).join('&');
-                const url = new URL(document.URL);
-                history.pushState({}, null, `${url.origin}${url.pathname}#busca_${tagsHash}`);
+                history.pushState({}, null, searchUrl);
             }
 
             findProjectsElements(foundProjects).forEach(element => $(element).show());
         } else {
             // Since we don't have any tags to filter, we display only the main projects
 
+            searchShareWrapper.hide();
+
             if (!globalPopped) {
                 // Push a new state to history without any hashes
                 const url = new URL(document.URL);
                 history.pushState({}, null, url.origin + url.pathname);
             }
+
+            // Clear search url input
+            searchUrlInput.val('');
 
             // Display all main projects
             const mainProjects = projects.filter(project => project.principal);

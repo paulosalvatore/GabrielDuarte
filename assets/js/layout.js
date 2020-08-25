@@ -24,50 +24,105 @@ const moveTo = (
 
 $(function () {
     // Project Share Link
-    const projectShareLink = $('.project__share_link');
+    const projectShareLink = $('.project__share_link--project');
+
+    // Search Share Link
+    const searchShareLink = $('.project__share_link--search');
+    searchShareLink.hide();
 
     // Modal display
     const projectDetailsModal = $('#project_details');
 
     // Button Share Link
-    const urlInput = $('.project__share_link_url');
+    const projectUrlInput = $('.project__share_link_url');
+    const searchUrlInput = $('.project__search_share_link_url');
 
-    const selectUrlInput = () => {
-        moveTo(urlInput, {
+    // Share Link copy
+    const projectShareLinkCopy = $('.project__share_link_copy');
+    const searchShareLinkCopy = $('.project__search-share_link_copy');
+
+    const selectProjectUrlInput = () => {
+        moveTo(projectUrlInput, {
             container: projectDetailsModal,
             callback: () => {
-                urlInput.focus();
+                projectUrlInput.focus();
             },
         });
 
-        urlInput[0].select();
-        urlInput[0].setSelectionRange(0, 99999); // For mobile devices
+        projectUrlInput[0].select();
+        projectUrlInput[0].setSelectionRange(0, 99999); // For mobile devices
     };
 
-    $('.urlInput').on('click', selectUrlInput);
+    const selectSearchUrlInput = () => {
+        moveTo(searchUrlInput, {
+            container: projectDetailsModal,
+            callback: () => {
+                searchUrlInput.focus();
+            },
+        });
+
+        searchUrlInput[0].select();
+        searchUrlInput[0].setSelectionRange(0, 99999); // For mobile devices
+    };
+
+    $('.projectUrlInput').on('click', selectProjectUrlInput);
 
     $('.project__share_buttons-link').on('click', function () {
-        const slideDuration = 200;
+        const duration = 200;
 
         if (projectShareLink.css('display') === 'none') {
-            projectShareLink.slideDown(slideDuration, selectUrlInput);
+            projectShareLink.slideDown(duration, () => {
+                selectProjectUrlInput();
+                projectShareLinkCopy.trigger('click');
+            });
         } else {
-            projectShareLink.slideUp(slideDuration);
+            projectShareLink.slideUp(duration);
         }
     });
 
-    const shareLinkCopy = $('.project__share_link_copy');
+    $('.project-share-search__button').on('click', function () {
+        const duration = 200;
 
-    shareLinkCopy.popover();
-
-    body.on('click', () => {
-        shareLinkCopy.popover('hide');
+        if (searchShareLink.css('display') === 'none') {
+            searchShareLink.fadeIn(duration, () => {
+                selectSearchUrlInput();
+                searchShareLinkCopy.trigger('click');
+            });
+        } else {
+            searchShareLink.fadeOut(duration);
+        }
     });
 
-    shareLinkCopy.on('click', function (event) {
-        shareLinkCopy.popover('show');
+    // Project Share Link Copy
 
-        selectUrlInput();
+    projectShareLinkCopy.popover();
+
+    body.on('click', () => {
+        projectShareLinkCopy.popover('hide');
+    });
+
+    projectShareLinkCopy.on('click', function (event) {
+        projectShareLinkCopy.popover('show');
+
+        selectProjectUrlInput();
+
+        document.execCommand('copy'); // Copy the text inside the text field
+
+        event.stopPropagation();
+    });
+
+    // Search Share Link Copy
+
+    searchShareLinkCopy.popover();
+
+    body.on('click', () => {
+        searchShareLinkCopy.popover('hide');
+    });
+
+    searchShareLinkCopy.on('click', function (event) {
+        searchShareLinkCopy.popover('show');
+
+        selectProjectUrlInput();
 
         document.execCommand('copy'); // Copy the text inside the text field
 
