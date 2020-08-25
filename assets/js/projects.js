@@ -457,7 +457,15 @@ const loadAutocomplete = () => {
             minLength: 1
         },
         onChipAdd: updateSearch,
-        onChipDelete: updateSearch
+        onChipDelete: () => {
+            const chips = getChipsInstance();
+
+            if (!chips.chipsData.length) {
+                $('.chips.input-field .input').focus();
+            }
+
+            updateSearch();
+        }
     });
 };
 
