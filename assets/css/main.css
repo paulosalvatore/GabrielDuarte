@@ -2715,6 +2715,7 @@ button:disabled,
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    justify-content: space-between;
     postiion: relative;
     margin: -2.5em 0 0 -2.5em;
 }
