@@ -173,6 +173,8 @@ const downloadVideo = project => {
     $.fileDownload(url);
 };
 
+let modalProject;
+
 const loadEvents = function () {
     // Modal display
 
@@ -181,60 +183,64 @@ const loadEvents = function () {
         const projectIndex = $(this).closest('.project').data('project');
         const project = projects[projectIndex];
 
-        // Reset iframe's visibility and content to force them to reload
+        if (modalProject !== project) {
+            modalProject = project;
 
-        youtubeIframeWrapper.hide();
-        youtubeIframeWrapper.html('');
+            // Reset iframe's visibility and content to force them to reload
 
-        soundcloudIframeWrapper.hide();
-        soundcloudIframeWrapper.html('');
+            youtubeIframeWrapper.hide();
+            youtubeIframeWrapper.html('');
 
-        // Load iframe for YouTube or SoundCloud
+            soundcloudIframeWrapper.hide();
+            soundcloudIframeWrapper.html('');
 
-        if (project.tipo === 'VIDEO' && project.youtube) {
-            const iframe = youtubeIframe.clone();
-            iframe.attr('src', getYouTubeIframeUrl(project));
-            youtubeIframeWrapper.append(iframe);
-            youtubeIframeWrapper.show();
-        } else if (project.tipo === 'AUDIO' && project.soundcloud) {
-            soundcloudIframeWrapper.html(project.soundcloud);
-            soundcloudIframeWrapper.show();
-        }
+            // Load iframe for YouTube or SoundCloud
 
-        // Update URL input
+            if (project.tipo === 'VIDEO' && project.youtube) {
+                const iframe = youtubeIframe.clone();
+                iframe.attr('src', getYouTubeIframeUrl(project));
+                youtubeIframeWrapper.append(iframe);
+                youtubeIframeWrapper.show();
+            } else if (project.tipo === 'AUDIO' && project.soundcloud) {
+                soundcloudIframeWrapper.html(project.soundcloud);
+                soundcloudIframeWrapper.show();
+            }
 
-        const urlInput = $('.project__share_link_url');
-        urlInput.val(getProjectUrl(project));
+            // Update URL input
 
-        // Hide share link by default
+            const urlInput = $('.project__share_link_url');
+            urlInput.val(getProjectUrl(project));
 
-        projectShareLink.hide();
+            // Hide share link by default
 
-        // Set download's button URL for audio and video files
+            projectShareLink.hide();
 
-        videoButton.hide();
-        audioButton.hide();
+            // Set download's button URL for audio and video files
 
-        if (project.tipo === 'VIDEO') {
-            // Both buttons should be visible
-            videoButton.show();
-            audioButton.show();
-
-            videoButton.unbind().on('click', () => {
-                downloadVideo(project);
-            });
-
-            audioButton.unbind().on('click', () => {
-                downloadAudio(project);
-            });
-        } else if (project.tipo === 'AUDIO') {
-            // Only audio button should be visible
             videoButton.hide();
-            audioButton.show();
+            audioButton.hide();
 
-            audioButton.unbind().on('click', () => {
-                downloadAudio(project);
-            });
+            if (project.tipo === 'VIDEO') {
+                // Both buttons should be visible
+                videoButton.show();
+                audioButton.show();
+
+                videoButton.unbind().on('click', () => {
+                    downloadVideo(project);
+                });
+
+                audioButton.unbind().on('click', () => {
+                    downloadAudio(project);
+                });
+            } else if (project.tipo === 'AUDIO') {
+                // Only audio button should be visible
+                videoButton.hide();
+                audioButton.show();
+
+                audioButton.unbind().on('click', () => {
+                    downloadAudio(project);
+                });
+            }
         }
 
         // Display modal and hide body's overflow

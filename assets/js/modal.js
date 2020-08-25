@@ -11,7 +11,7 @@ body.on('click', event => {
 
         modal.find('iframe').each(function () {
             $(this).attr('src', $(this).attr('src'));
-        })
+        });
 
         body.css('overflow', 'auto');
     }
