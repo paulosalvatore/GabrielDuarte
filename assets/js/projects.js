@@ -299,12 +299,15 @@ const loadEvents = function () {
     });
 
     // Tags
-    $('.tag').on('click', function () {
+    $('.tag').on('click', function (event) {
         const chips = getChipsInstance();
 
         chips.addChip({
             tag: $(this).text()
         });
+
+        event.preventDefault();
+        event.stopPropagation();
     });
 };
 
