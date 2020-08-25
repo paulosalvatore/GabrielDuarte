@@ -160,13 +160,14 @@ article {
 
 .tag {
     background: white;
-    border-radius: 50px;
-    display: inline-block;
-    padding: 2px 10px;
-    text-decoration: none;
-    font-size: 12px;
     border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 10px;
     margin: 0 8px;
+    text-decoration: none;
     transition: transform 0.2s;
 }
 

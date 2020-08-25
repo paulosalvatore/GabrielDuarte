@@ -298,13 +298,21 @@ const createProjectElement = (project, index) => {
 
 const loadEvents = function () {
     // Modal display
-
     $('.project .link').on('click', function () {
         // Load Project
         const projectIndex = $(this).closest('.project').data('project');
         const project = projects[projectIndex];
 
         showModal(project);
+    });
+
+    // Tags
+    $('.tag').on('click', function () {
+        const chips = getChipsInstance();
+
+        chips.addChip({
+            tag: $(this).text()
+        });
     });
 };
 
