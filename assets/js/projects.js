@@ -369,7 +369,7 @@ const loadAutocomplete = () => {
 
         // Load chips and get all tags
         const chips = getChipsInstance();
-        const tags = chips.chipsData.map(chip => chip.tag);
+        const tags = chips.chipsData.map(chip => chip.tag.split(' ')).flat();
 
         // Load tag aliases
         tagsAlias
