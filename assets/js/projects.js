@@ -337,6 +337,8 @@ const updateProjectsElementsColor = function () {
     });
 };
 
+const getChipsInstance = () => M.Chips.getInstance($('.chips'));
+
 const loadAutocomplete = () => {
     // Load unique tags based on projects list
     const tags = Array.from(new Set(projects.map(project => project.tags).flat()));
@@ -351,7 +353,7 @@ const loadAutocomplete = () => {
     // Load materialize's chips
     const updateSearch = () => {
         // Load chips and get all tags
-        const chips = M.Chips.getInstance($('.chips'));
+        const chips = getChipsInstance();
         const tags = chips.chipsData.map(chip => chip.tag);
 
         // Load tag aliases
@@ -399,8 +401,13 @@ const loadAutocomplete = () => {
         updateProjectsElementsColor();
     };
 
+    const placeholderDesktop = 'Busque por cliente, mood, interpretação, tipo da peça etc.';
+    const placeholderMobile = 'Cliente, mood etc.';
+
+    const isMobile = window.innerWidth <= 620;
+
     $('.project-search .chips-autocomplete').chips({
-        placeholder: 'Cliente, mood etc.',
+        placeholder: isMobile ? placeholderMobile : placeholderDesktop,
         autocompleteOptions: {
             data: tagsObj,
             limit: Infinity,
