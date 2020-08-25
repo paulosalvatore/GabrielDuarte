@@ -129,6 +129,10 @@ const downloadVideo = project => {
 let modalProject;
 
 const showModal = project => {
+    if (!project) {
+        return;
+    }
+
     if (modalProject !== project) {
         modalProject = project;
 
@@ -302,9 +306,7 @@ const loadCurrentUrl = () => {
 
         const project = projects.find(project => project.id === projectId);
 
-        if (project) {
-            showModal(project);
-        }
+        showModal(project);
     }
 };
 
