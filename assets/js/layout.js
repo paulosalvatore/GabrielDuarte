@@ -46,7 +46,7 @@ $(function () {
 
     $('.urlInput').on('click', selectUrlInput);
 
-    $('.share_link').on('click', function () {
+    $('.project__share_buttons-link').on('click', function () {
         const slideDuration = 200;
 
         if (projectShareLink.css('display') === 'none') {
