@@ -159,7 +159,9 @@ const downloadAudio = (project) => {
     x.responseType = 'blob';
 
     x.onload = () => {
-        download(x.response, `${project.id}.mp3`, 'audio/mpeg');
+        if (x.response.type === 'audio/mpeg') {
+            download(x.response, `${project.id}.mp3`, 'audio/mpeg');
+        }
     };
 
     x.send();
