@@ -286,13 +286,21 @@ const loadEvents = function () {
 };
 
 const loadAutocomplete = () => {
-    // Search Autocomplete
+    // Load unique tags based on projects list
     const tags = Array.from(new Set(projects.map(project => project.tags).flat()));
 
-    const searchInput = $('.search');
+    // Convert tags array into an object based on 'chips' data format
+    const tagsObj = {};
+    tags.forEach(tag => tagsObj[tag] = null);
 
-    searchInput.each(function () {
-        autocomplete($(this)[0], tags);
+    // Load materialize's chips
+    $('.project-search .chips-autocomplete').chips({
+        placeholder: 'Busque por cliente, mood, interpretação, tipo da peça etc.',
+        autocompleteOptions: {
+            data: tagsObj,
+            limit: Infinity,
+            minLength: 1
+        }
     });
 };
 

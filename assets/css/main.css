@@ -92,7 +92,6 @@ input, select, textarea {
 #main form {
     position: relative;
     width: 100%;
-    /*max-width: 930px;*/
     margin: 0 auto;
     text-align: center;
     display: flex;

@@ -8,14 +8,27 @@
     <link rel="shortcut icon" href="favicon.ico">
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+
+    <!-- Libraries -->
     <link rel="stylesheet" href="assets/css/popover.css"/>
+
+    <link href="assets/css/material-icons.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="assets/css/materialize.min.css">-->
+
+    <link href="assets/css/chips.css" rel="stylesheet">
+
+    <!-- Template -->
+
     <link rel="stylesheet" href="assets/css/main.css"/>
-    <link rel="stylesheet" href="assets/css/modal.css"/>
-    <link rel="stylesheet" href="assets/css/style.css"/>
-    <link rel="stylesheet" href="assets/css/autocomplete.css"/>
+
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
+
+    <!-- Custom -->
+
+    <link rel="stylesheet" href="assets/css/modal.css"/>
+    <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body class="is-preload">
 
@@ -108,20 +121,14 @@
     <div id="main">
 
         <div class="inner">
-            <form method="post" action="#">
-                <span class="icon solid style2 fa-search label"></span>
+            <div class="project-search">
+                <span class="icon solid search-icon style2 fa-search label"></span>
 
-                <input class="search search-mobile" type="text" name="search_autocomplete_project"
-                       placeholder="Busque por cliente, mood etc"/>
+                <div class="chips chips-autocomplete"></div>
 
-                <input class="search search-desktop" type="text" name="search_autocomplete_project"
-                       placeholder="Busque por cliente, mood, interpretação, tipo da peça etc."/>
-
-                <input type="submit" value="buscar" class="primary"/>
-            </form>
-
-            <div class="autocomplete">
-                <div id="autocomplete-list" class="autocomplete-items"></div>
+                <input type="button"
+                       class="project-search__button primary"
+                       value="Buscar"/>
             </div>
 
             <section class="tiles">
@@ -168,6 +175,7 @@
         crossorigin="anonymous"></script>
 <script src="assets/js/jquery.fileDownload.js"></script>
 <script src="assets/js/download.js"></script>
+<script src="assets/js/materialize.min.js"></script>
 
 <!-- Template Scripts -->
 <script src="assets/js/util.js"></script>
@@ -175,7 +183,6 @@
 
 <!-- Custom scripts -->
 <script src="assets/js/modal.js"></script>
-<script src="assets/js/autocomplete.js"></script>
 <script src="assets/js/layout.js"></script>
 <script src="assets/js/projects.js"></script>
 
