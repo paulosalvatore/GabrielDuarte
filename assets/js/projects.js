@@ -79,7 +79,7 @@ const createProjectElement = (project, index) => {
     // Clone base element
     const projectElement = projectBaseElement.clone();
 
-    // Remove id so element can be shown
+    // Remove base element's id
     projectElement.removeAttr('id');
 
     // Set data-project based on index
@@ -128,6 +128,11 @@ const createProjectElement = (project, index) => {
     // Link
     const link = getProjectUrl(project);
     projectElement.find('a').attr('href', link);
+
+    // Update visibility based on 'project.principal' value
+    if (!project.principal) {
+        projectElement.hide();
+    }
 
     // Add new element to projectBaseElement's parent
     projectBaseElement.parent().append(projectElement);
