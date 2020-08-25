@@ -401,18 +401,22 @@ const loadAutocomplete = () => {
                 return acc;
             }, []);
 
-            // Push a new state to history with a hash based on search input
-            const tagsHash = clearUrl(tags.join(' '));
-            const url = new URL(document.URL);
-            history.pushState({}, null, `${url.origin}${url.pathname}#busca_${tagsHash}`);
+            if (!globalPopped) {
+                // Push a new state to history with a hash based on search input
+                const tagsHash = tags.map(clearUrl).join('&');
+                const url = new URL(document.URL);
+                history.pushState({}, null, `${url.origin}${url.pathname}#busca_${tagsHash}`);
+            }
 
             findProjectsElements(foundProjects).forEach(element => $(element).show());
         } else {
             // Since we don't have any tags to filter, we display only the main projects
 
-            // Push a new state to history without any hashes
-            const url = new URL(document.URL);
-            history.pushState({}, null, url.origin + url.pathname);
+            if (!globalPopped) {
+                // Push a new state to history without any hashes
+                const url = new URL(document.URL);
+                history.pushState({}, null, url.origin + url.pathname);
+            }
 
             // Display all main projects
             const mainProjects = projects.filter(project => project.principal);
@@ -441,7 +445,11 @@ const loadAutocomplete = () => {
 
 // Current URL load
 
+let globalPopped;
+
 const loadCurrentUrl = (popped) => {
+    globalPopped = popped;
+
     const url = new URL(document.URL);
 
     if (url.hash.includes('projeto_')) {
@@ -453,6 +461,28 @@ const loadCurrentUrl = (popped) => {
     } else if (modal.css('display') !== 'none') {
         hideModal(popped);
     }
+
+    const chips = getChipsInstance();
+
+    if (url.hash.includes('busca_')) {
+        const tags = invertClearUrl(url.hash.replace('#busca_', '')).split('&');
+
+        for (let i = 0; i < chips.chipsData.length; i++) {
+            const chip = chips.chipsData[i];
+
+            if (!tags.includes(chip.tag)) {
+                chips.deleteChip(i);
+            }
+        }
+
+        tags.forEach(tag => chips.addChip({tag}));
+    } else {
+        for (let i = 0; i < chips.chipsData.length; i++) {
+            chips.deleteChip(i);
+        }
+    }
+
+    globalPopped = false;
 };
 
 // Data Ready
