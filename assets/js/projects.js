@@ -73,10 +73,12 @@ const getYouTubeVideoId = project => {
     return videoId;
 };
 
-const getYouTubeImageUrl = project => {
+const getYouTubeImageUrl = (project, highRes = false) => {
     const videoId = getYouTubeVideoId(project);
 
-    return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    const fileName = highRes ? 'maxresdefault' : 'hqdefault';
+
+    return `https://img.youtube.com/vi/${videoId}/${fileName}.jpg`;
 };
 
 const getYouTubeIframeUrl = project => {
@@ -229,7 +231,27 @@ const createProjectElement = (project, index) => {
     const imageUrl = project.imagem || getYouTubeImageUrl(project);
     const imageElement = projectElement.find('.image');
 
-    imageElement.find('.project__image').css('background-image', `url('${imageUrl}')`);
+    imageElement
+        .find('.project__image')
+        .css('background-image', `url('${imageUrl}')`);
+
+    // Try to load image high res
+
+    if (!project.imagem) {
+        const highResImageUrl = getYouTubeImageUrl(project, true);
+
+        const img = new Image();
+
+        img.onload = () => {
+            if (img.width > 480) {
+                imageElement
+                    .find('.project__image')
+                    .css('background-image', `url('${highResImageUrl}')`);
+            }
+        };
+
+        img.src = highResImageUrl;
+    }
 
     // Title and subtitle
 

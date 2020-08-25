@@ -2455,7 +2455,11 @@ input[type="radio"] + label:before {
     border-radius: 4px;
     display: block;
     height: 300px;
+}
+
+.image .project__image {
     background-position: center;
+    background-size: auto 100%;
 }
 
 .image.left, .image.right {
