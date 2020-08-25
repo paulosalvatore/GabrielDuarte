@@ -468,15 +468,14 @@ const loadAutocomplete = () => {
             }, 100);
         },
         onChipDelete: () => {
-            // const chips = getChipsInstance();
-            //
-            // if (!chips.chipsData.length) {
-            //     $('.chips.input-field .input').focus();
-            // }
-
             updateSearch();
 
             $('.chips.input-field .input').focus();
+        },
+        onChipSelect: (event, chip) => {
+            const chips = getChipsInstance();
+
+            chips.deleteChip($(chip).index());
         }
     });
 };
