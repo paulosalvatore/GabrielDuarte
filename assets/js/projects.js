@@ -197,14 +197,36 @@ const loadEvents = function () {
             videoButton.show();
             audioButton.show();
 
-            videoButton.attr('href', loadMediaUrl(project, 'VIDEO'));
-            audioButton.attr('href', loadMediaUrl(project, 'AUDIO'));
+            videoButton.on('click', () => {
+                const url = loadMediaUrl(project, 'VIDEO');
+
+                $.fileDownload(url);
+            });
+
+            audioButton.on('click', () => {
+                const url = loadMediaUrl(project, 'AUDIO');
+
+                const x = new XMLHttpRequest();
+                x.open('GET', url, true);
+                x.responseType = 'blob';
+                x.onload = function (e) {
+                    download(x.response, 'teste.mp3', 'audio/mpeg');
+                };
+                x.send();
+                // download("hello world", "dlText.txt", "text/plain");
+
+                // $.fileDownload(url);
+            });
         } else if (project.tipo === 'AUDIO') {
             // Only audio button should be visible
             videoButton.hide();
             audioButton.show();
 
-            audioButton.attr('href', loadMediaUrl(project, 'AUDIO'));
+            audioButton.on('click', () => {
+                const url = loadMediaUrl(project, 'AUDIO');
+
+                $.fileDownload(url);
+            });
         }
 
         // Display modal and hide body's overflow
