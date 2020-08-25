@@ -461,15 +461,23 @@ const loadAutocomplete = () => {
             limit: Infinity,
             minLength: 1
         },
-        onChipAdd: updateSearch,
-        onChipDelete: () => {
-            const chips = getChipsInstance();
+        onChipAdd: () => {
+            updateSearch();
 
-            if (!chips.chipsData.length) {
-                $('.chips.input-field .input').focus();
-            }
+            setTimeout(function () {
+                $('.chips.input-field .input').trigger('click');
+            }, 100);
+        },
+        onChipDelete: () => {
+            // const chips = getChipsInstance();
+            //
+            // if (!chips.chipsData.length) {
+            //     $('.chips.input-field .input').focus();
+            // }
 
             updateSearch();
+
+            $('.chips.input-field .input').focus();
         }
     });
 };
