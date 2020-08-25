@@ -298,7 +298,7 @@ const loadAutocomplete = () => {
 
 // Current URL load
 
-const loadCurrentUrl = () => {
+const loadCurrentUrl = (popped) => {
     const url = new URL(document.URL);
 
     if (url.hash.includes('projeto_')) {
@@ -307,6 +307,8 @@ const loadCurrentUrl = () => {
         const project = projects.find(project => project.id === projectId);
 
         showModal(project);
+    } else if (modal.css('display') !== 'none') {
+        hideModal(popped);
     }
 };
 
@@ -322,4 +324,8 @@ const dataReady = () => {
     createProjectsElements(projects);
 
     loadCurrentUrl();
+
+    window.onpopstate = () => {
+        loadCurrentUrl(true);
+    }
 };
