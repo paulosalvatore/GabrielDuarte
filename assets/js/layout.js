@@ -27,7 +27,7 @@ $(function () {
     const projectShareLink = $('.project__share_link');
 
     // Modal display
-    const projectDetailsModal = $('#projectDetails');
+    const projectDetailsModal = $('#project_details');
 
     // Button Share Link
     const urlInput = $('.project__share_link_url');

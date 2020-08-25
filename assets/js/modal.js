@@ -2,7 +2,7 @@
 const body = $('body');
 
 // Get the modal
-const modal = $('#projectDetails');
+const modal = $('#project_details');
 
 // When the user clicks anywhere outside of the modal, close it
 body.on('click', event => {
