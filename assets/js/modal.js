@@ -9,6 +9,10 @@ body.on('click', event => {
     if (event.target === modal[0]) {
         modal.hide();
 
+        modal.find('iframe').each(function () {
+            $(this).attr('src', $(this).attr('src'));
+        })
+
         body.css('overflow', 'auto');
     }
 });
