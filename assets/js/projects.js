@@ -302,7 +302,9 @@ const loadCurrentUrl = () => {
 
         const project = projects.find(project => project.id === projectId);
 
-        showModal(project);
+        if (project) {
+            showModal(project);
+        }
     }
 };
 
