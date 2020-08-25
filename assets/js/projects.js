@@ -3,6 +3,7 @@
 const visibleTagsAmount = 3;
 
 const mediaBaseUrl = 'https://github.com/paulosalvatore/GabrielDuarte/raw/master/media';
+const getProxyUrl = url => `https://cors-anywhere.herokuapp.com/${url}`;
 
 // Load JSON data
 
@@ -150,6 +151,26 @@ const loadMediaUrl = (project, mediaType) => {
     return `${mediaBaseUrl}/${mediaType.toLowerCase()}/${project.id}.${fileExtension}`;
 };
 
+const downloadAudio = (project) => {
+    const url = loadMediaUrl(project, 'AUDIO');
+
+    const x = new XMLHttpRequest();
+    x.open('GET', getProxyUrl(url), true);
+    x.responseType = 'blob';
+
+    x.onload = () => {
+        download(x.response, `${project.id}.mp3`, 'audio/mpeg');
+    };
+
+    x.send();
+};
+
+const downloadVideo = project => {
+    const url = loadMediaUrl(project, 'VIDEO');
+
+    $.fileDownload(url);
+};
+
 const loadEvents = function () {
     // Modal display
 
@@ -198,34 +219,19 @@ const loadEvents = function () {
             audioButton.show();
 
             videoButton.on('click', () => {
-                const url = loadMediaUrl(project, 'VIDEO');
-
-                $.fileDownload(url);
+                downloadVideo(project);
             });
 
-            audioButton.on('click', () => {
-                const url = loadMediaUrl(project, 'AUDIO');
-
-                const x = new XMLHttpRequest();
-                x.open('GET', url, true);
-                x.responseType = 'blob';
-                x.onload = function (e) {
-                    download(x.response, 'teste.mp3', 'audio/mpeg');
-                };
-                x.send();
-                // download("hello world", "dlText.txt", "text/plain");
-
-                // $.fileDownload(url);
+            audioButton.unbind().on('click', () => {
+                downloadAudio(project);
             });
         } else if (project.tipo === 'AUDIO') {
             // Only audio button should be visible
             videoButton.hide();
             audioButton.show();
 
-            audioButton.on('click', () => {
-                const url = loadMediaUrl(project, 'AUDIO');
-
-                $.fileDownload(url);
+            audioButton.unbind().on('click', () => {
+                downloadAudio(project);
             });
         }
 
