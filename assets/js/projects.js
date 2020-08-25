@@ -218,7 +218,7 @@ const loadEvents = function () {
             videoButton.show();
             audioButton.show();
 
-            videoButton.on('click', () => {
+            videoButton.unbind().on('click', () => {
                 downloadVideo(project);
             });
 
