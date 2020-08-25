@@ -292,6 +292,20 @@ const loadAutocomplete = () => {
     });
 };
 
+// Current URL load
+
+const loadCurrentUrl = () => {
+    const url = new URL(document.URL);
+
+    if (url.hash.includes('projeto_')) {
+        const projectId = invertClearUrl(url.hash.replace('#projeto_', ''));
+
+        const project = projects.find(project => project.id === projectId);
+
+        showModal(project);
+    }
+};
+
 // Data Ready
 
 const dataReady = () => {
@@ -302,4 +316,6 @@ const dataReady = () => {
     }
 
     createProjectsElements(projects);
+
+    loadCurrentUrl();
 };
