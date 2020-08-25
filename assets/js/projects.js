@@ -394,19 +394,18 @@ const loadAutocomplete = () => {
             searchShareWrapper.show();
 
             const foundProjects = projects.reduce((acc, project, i, arr) => {
-                const foundTag =
+                const keywords = project.tags
+                    .concat(
+                        project.titulo.split(' '),
+                        project.subtitulo ? project.subtitulo.split(' ') : []
+                    );
+
+                const found =
                     splitTags.every(tag =>
-                        project.tags.some(projectTag =>
-                            clearString(projectTag).includes(clearString(tag))));
+                        keywords.some(keyword =>
+                            clearString(keyword).includes(clearString(tag))));
 
-                const foundTitulo =
-                    splitTags.some(tag => clearString(project.titulo).includes(clearString(tag)));
-
-                const foundSubtitulo =
-                    project.subtitulo
-                    && splitTags.some(tag => clearString(project.subtitulo).includes(clearString(tag)));
-
-                if (foundTag || foundTitulo || foundSubtitulo) {
+                if (found) {
                     acc.push(project);
                 }
 
