@@ -87,18 +87,6 @@ const getYouTubeIframeUrl = project => {
     return `https://www.youtube.com/embed/${videoId}`;
 };
 
-// URL Helpers
-
-const clearUrl = text => encodeURIComponent(text.replace(/ /g, '_'));
-
-const invertClearUrl = url => decodeURIComponent(url).replace(/_/g, ' ');
-
-const getProjectUrl = project => {
-    const pageUrl = new URL(document.URL);
-
-    return `${pageUrl.origin}${pageUrl.pathname}#projeto_${clearUrl(project.id)}`;
-};
-
 // Media
 
 const loadMediaUrl = (project, mediaType) => {
@@ -316,6 +304,18 @@ const loadEvents = function () {
     });
 };
 
+// URL Helpers
+
+const clearUrl = text => encodeURIComponent(text.replace(/ /g, '_'));
+
+const invertClearUrl = url => decodeURIComponent(url).replace(/_/g, ' ');
+
+const getProjectUrl = project => {
+    const pageUrl = new URL(document.URL);
+
+    return `${pageUrl.origin}${pageUrl.pathname}#projeto_${clearUrl(project.id)}`;
+};
+
 // String Helper
 
 const clearString = tag => tag.toLowerCase()
@@ -360,6 +360,8 @@ const loadAutocomplete = () => {
 
     // Load materialize's chips
     const updateSearch = () => {
+        // Since we have tags to filter, we display only the filtered projects
+
         // Load chips and get all tags
         const chips = getChipsInstance();
         const tags = chips.chipsData.map(chip => chip.tag);
@@ -399,10 +401,21 @@ const loadAutocomplete = () => {
                 return acc;
             }, []);
 
+            // Push a new state to history with a hash based on search input
+            const tagsHash = clearUrl(tags.join(' '));
+            const url = new URL(document.URL);
+            history.pushState({}, null, `${url.origin}${url.pathname}#busca_${tagsHash}`);
+
             findProjectsElements(foundProjects).forEach(element => $(element).show());
         } else {
-            const mainProjects = projects.filter(project => project.principal);
+            // Since we don't have any tags to filter, we display only the main projects
 
+            // Push a new state to history without any hashes
+            const url = new URL(document.URL);
+            history.pushState({}, null, url.origin + url.pathname);
+
+            // Display all main projects
+            const mainProjects = projects.filter(project => project.principal);
             findProjectsElements(mainProjects).forEach(element => $(element).show());
         }
 
