@@ -2,6 +2,8 @@
 
 const visibleTagsAmount = 3;
 
+const levenshteinFactor = 2;
+
 const mediaBaseUrl = 'https://github.com/paulosalvatore/GabrielDuarte/raw/master/media';
 const getProxyUrl = url => `https://cors-anywhere.herokuapp.com/${url}`;
 
@@ -438,7 +440,10 @@ const loadAutocomplete = () => {
                 const found =
                     splitTags.every(tag =>
                         keywords.some(keyword =>
-                            clearString(keyword).includes(clearString(tag))));
+                            clearString(keyword).includes(clearString(tag))
+                            || levenshteinDistance(clearString(keyword), clearString(tag)) <= levenshteinFactor
+                        )
+                    );
 
                 if (found) {
                     acc.push(project);
