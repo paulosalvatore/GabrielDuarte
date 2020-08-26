@@ -189,9 +189,18 @@ const showModal = project => {
 
     // Display modal and hide body's overflow
 
+    const modalContent = $('.modal-content');
+    modalContent.css({
+        'opacity': 0
+    });
+
     projectDetailsModal.show();
 
-    $('body').css('overflow', 'hidden');
+    modalContent.animate({
+        'opacity': 1
+    })
+
+    $('body').addClass('modal-open');
 };
 
 // Projects Elements
