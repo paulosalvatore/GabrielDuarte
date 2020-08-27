@@ -4,7 +4,6 @@ const visibleTagsAmount = 3;
 
 const levenshteinFactor = 2;
 
-// const mediaBaseUrl = 'https://github.com/gabrielduarte2007/gabrielduarte2007.github.io/raw/master/media';
 const mediaFolder = 'media';
 const getProxyUrl = url => `https://cors-anywhere.herokuapp.com/${url}`;
 
@@ -101,7 +100,6 @@ const getYouTubeIframeUrl = project => {
 const loadMediaUrl = (project, mediaType) => {
     const fileExtension = mediaType === 'VIDEO' ? 'mp4' : 'mp3';
     return `${mediaFolder}/${mediaType.toLowerCase()}/${project.id}.${fileExtension}`;
-    // return `${mediaBaseUrl}/${mediaType.toLowerCase()}/${project.id}.${fileExtension}`;
 };
 
 /*
