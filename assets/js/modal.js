@@ -4,11 +4,11 @@ const body = $('body');
 // Get the modal
 const modal = $('#project_details');
 
-const hideModal = (popped) => {
+const hideModal = function (popped) {
     const modalContent = $('.modal-content');
     modalContent.animate({
         'opacity': 0
-    }, 600, () => {
+    }, 600, function () {
         modal.hide();
 
         modal.find('iframe').each(function () {
@@ -25,7 +25,7 @@ const hideModal = (popped) => {
 };
 
 // When the user clicks anywhere outside of the modal, close it
-body.on('click', event => {
+body.on('click', function (event) {
     if (event.target === modal[0]) {
         hideModal();
     }
