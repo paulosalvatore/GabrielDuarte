@@ -249,6 +249,13 @@ const createProjectsElements = function (projects) {
 
     projectsElements = $('.project');
 
+    projectsElements.sort(function (a, b) {
+        const aIsPrincipal = $(a).data('principal');
+        const bIsPrincipal = $(b).data('principal');
+
+        return (aIsPrincipal === bIsPrincipal) ? 0 : aIsPrincipal ? -1 : 1;
+    }).appendTo('#projects');
+
     loadEvents();
 
     loadAutocomplete();
@@ -329,10 +336,8 @@ const createProjectElement = function (project, index) {
     const link = getProjectUrl(project);
     projectElement.find('.link').attr('href', link);
 
-    // Update visibility based on 'project.principal' value
-    if (!project.principal) {
-        projectElement.hide();
-    }
+    // Add 'project.principal' to html's data
+    projectElement.data('principal', Boolean(project.principal));
 
     // Add new element to projectBaseElement's parent
     projectBaseElement.parent().append(projectElement);
