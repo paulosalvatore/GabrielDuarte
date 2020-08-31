@@ -503,6 +503,10 @@ const loadAutocomplete = function () {
             const url = new URL(document.URL);
             const searchUrl = `${url.origin}${url.pathname}#busca_${tagsHash}`;
 
+            if (updateLastSearchUrl) {
+                lastSearchUrl = searchUrl;
+            }
+
             // Update search url input
             searchUrlInput.val(searchUrl);
 
@@ -523,6 +527,10 @@ const loadAutocomplete = function () {
                 // Push a new state to history without any hashes
                 const url = new URL(document.URL);
                 history.pushState({}, null, url.origin + url.pathname);
+            }
+
+            if (updateLastSearchUrl) {
+                lastSearchUrl = '';
             }
 
             // Clear search url input
@@ -554,6 +562,7 @@ const loadAutocomplete = function () {
             minLength: 1
         },
         onChipAdd: function () {
+            console.log('chipAdd');
             updateSearch();
 
             setTimeout(function () {
@@ -561,11 +570,13 @@ const loadAutocomplete = function () {
             }, 100);
         },
         onChipDelete: function () {
+            console.log('chipDelete');
             updateSearch();
 
             $('.chips.input-field .input').focus();
         },
         onChipSelect: function (event, chip) {
+            console.log('onChipSelect');
             const chips = getChipsInstance();
 
             chips.deleteChip($(chip).index());
@@ -596,6 +607,8 @@ const loadCurrentUrl = function (popped) {
 
     const chips = getChipsInstance();
 
+    updateLastSearchUrl = false;
+
     if (url.hash.includes('busca_')) {
         const tags = invertClearUrl(url.hash.replace('#busca_', '')).split('&');
 
@@ -615,6 +628,8 @@ const loadCurrentUrl = function (popped) {
             chips.deleteChip(i);
         }
     }
+
+    updateLastSearchUrl = true;
 
     globalPopped = false;
 };

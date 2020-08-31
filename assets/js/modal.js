@@ -19,7 +19,10 @@ const hideModal = function (popped) {
 
         if (!popped) {
             const url = new URL(document.URL);
-            history.pushState({}, null, url.origin + url.pathname);
+            const nextUrl = lastSearchUrl || url.origin + url.pathname;
+
+            // TODO: Apenas mudar a URL não funciona, precisa disparar para adicionar as chips de busca
+            history.pushState({}, null, nextUrl);
         }
     });
 };
