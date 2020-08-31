@@ -4,6 +4,10 @@ const visibleTagsAmount = 3;
 
 const levenshteinFactor = 2;
 
+const loadHighResImage = false;
+
+// Media
+
 const mediaFolder = 'media';
 const getProxyUrl = url => `https://cors-anywhere.herokuapp.com/${url}`;
 
@@ -269,7 +273,7 @@ const createProjectElement = (project, index) => {
 
     // Try to load image high res
 
-    if (!project.imagem) {
+    if (loadHighResImage && !project.imagem) {
         $(function () {
             setTimeout(() => {
                 const highResImageUrl = getYouTubeImageUrl(project, true);
