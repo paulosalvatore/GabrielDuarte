@@ -85,7 +85,8 @@ const getYouTubeVideoId = function (project) {
 
 const getYouTubeImageUrl = function (project, highRes = false) {
     if (!project.youtube) {
-        return 'URL_NOT_FOUND';
+        console.error(`Project ${project.id} is a VIDEO without youtube url.`)
+        return 'YOUTUBE_URL_NOT_FOUND';
     }
 
     const videoId = getYouTubeVideoId(project);
