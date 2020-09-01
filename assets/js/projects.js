@@ -432,8 +432,17 @@ const loadAutocomplete = function () {
         return project.tags;
     }).flat()));
 
+    const autocompleteValues = Array.from(new Set(projects.map(function (project) {
+        return [
+            ...project.tags,
+            project.titulo,
+            project.subtitulo,
+            project.titulo + ": " +project.subtitulo,
+        ];
+    }).flat()));
+
     // Convert tags array into an object based on 'chips' data format
-    const tagsObj = tags.reduce(function (acc, curr) {
+    const autocompleteData = autocompleteValues.reduce(function (acc, curr) {
         acc[curr] = null;
 
         return acc;
@@ -553,7 +562,7 @@ const loadAutocomplete = function () {
     $('.project-search .chips-autocomplete').chips({
         placeholder: isMobile ? placeholderMobile : placeholderDesktop,
         autocompleteOptions: {
-            data: tagsObj,
+            data: autocompleteData,
             limit: Infinity,
             minLength: 1
         },
