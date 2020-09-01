@@ -536,12 +536,8 @@ const loadAutocomplete = function () {
             // Clear search url input
             searchUrlInput.val('');
 
-            // Display all main projects
-            const mainProjects = projects.filter(function (project) {
-                return project.principal;
-            });
-
-            findProjectsElements(mainProjects).forEach(function (element) {
+            // Display all projects
+            findProjectsElements(projects).forEach(function (element) {
                 return $(element).show();
             });
         }
