@@ -171,6 +171,8 @@ const showModal = function (project) {
     if (modalProject !== project) {
         modalProject = project;
 
+        $('.chips.input-field .input').blur();
+
         // Reset iframe's visibility and content to force them to reload
 
         youtubeIframeWrapper.hide();
