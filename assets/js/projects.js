@@ -268,6 +268,9 @@ const createProjectElement = function (project, index) {
     // Clone base element
     const projectElement = projectBaseElement.clone();
 
+    // Add new element to projectBaseElement's parent
+    projectBaseElement.parent().append(projectElement);
+
     // Remove base element's id
     projectElement.removeAttr('id');
 
@@ -301,7 +304,6 @@ const createProjectElement = function (project, index) {
 
     if (project.tipo === 'AUDIO' && !project.imagem_largura) {
         const height = project.imagem_altura || originalSize[1];
-
         cssImageProperties['background-size'] = `100% ${height}`;
     }
 
@@ -367,9 +369,6 @@ const createProjectElement = function (project, index) {
 
     // Add 'project.principal' to html's data
     projectElement.data('principal', Boolean(project.principal));
-
-    // Add new element to projectBaseElement's parent
-    projectBaseElement.parent().append(projectElement);
 };
 
 const loadEvents = function () {
