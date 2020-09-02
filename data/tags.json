@@ -7,7 +7,10 @@
   },
   {
     "nome": "Farmacêutico",
-    "alias": []
+    "alias": [
+      "Farma",
+      "Remédio"
+    ]
   },
   {
     "nome": "Cerveja",
@@ -23,7 +26,11 @@
   },
   {
     "nome": "Educação",
-    "alias": []
+    "alias": [
+      "Faculdade",
+      "Universidade",
+      "Escola"
+    ]
   },
   {
     "nome": "Moda",
@@ -35,7 +42,10 @@
   },
   {
     "nome": "Construção",
-    "alias": []
+    "alias": [
+      "Construção Civil",
+      "Construtora"
+    ]
   },
   {
     "nome": "Shopping",
@@ -43,7 +53,9 @@
   },
   {
     "nome": "Operadora",
-    "alias": []
+    "alias": [
+      "Telefonia"
+    ]
   },
   {
     "nome": "Loja",
@@ -59,7 +71,9 @@
   },
   {
     "nome": "Supermercado",
-    "alias": []
+    "alias": [
+      "Mercado"
+    ]
   },
   {
     "nome": "Unifebe",
@@ -143,7 +157,11 @@
   },
   {
     "nome": "Bv Financeira",
-    "alias": []
+    "alias": [
+      "BV",
+      "Banco Votorantim",
+      "Votorantim"
+    ]
   },
   {
     "nome": "Canoas Shopping",
@@ -208,6 +226,12 @@
   {
     "nome": "Dia",
     "alias": []
+  },
+  {
+    "nome": "Diálogo",
+    "alias": [
+      "Conversa"
+    ]
   },
   {
     "nome": "Dib",
@@ -304,6 +328,15 @@
   {
     "nome": "Ease",
     "alias": []
+  },
+  {
+    "nome": "Carro",
+    "alias": [
+      "Auto",
+      "Automotivo",
+      "Automóvel",
+      "Veículo"
+    ]
   },
   {
     "nome": "Italianos da Serra",
@@ -543,7 +576,10 @@
   },
   {
     "nome": "Animação",
-    "alias": []
+    "alias": [
+      "Desenho Animado",
+      "Cartoon"
+    ]
   },
   {
     "nome": "Narramatic",
@@ -595,7 +631,10 @@
   },
   {
     "nome": "Mágico",
-    "alias": []
+    "alias": [
+      "Magia",
+      "Mágica"
+    ]
   },
   {
     "nome": "Descolado",
@@ -603,11 +642,16 @@
   },
   {
     "nome": "Ator",
-    "alias": []
+    "alias": [
+      "Atuado",
+      "Atuação"
+    ]
   },
   {
     "nome": "Rápido",
-    "alias": []
+    "alias": [
+      "Ágil"
+    ]
   },
   {
     "nome": "Lento",
@@ -643,7 +687,21 @@
   },
   {
     "nome": "Simpático",
-    "alias": []
+    "alias": [
+      "Sorridente"
+    ]
+  },
+  {
+    "nome": "Aplicativo",
+    "alias": [
+      "APP"
+    ]
+  },
+  {
+    "nome": "Aerado",
+    "alias": [
+      "Ar"
+    ]
   },
   {
     "nome": "De bem com a vida",
@@ -651,7 +709,12 @@
   },
   {
     "nome": "Coloquial",
-    "alias": []
+    "alias": [
+      "Informal",
+      "Conversado",
+      "Conversa",
+      "Falado"
+    ]
   },
   {
     "nome": "Cool",
@@ -659,6 +722,10 @@
   },
   {
     "nome": "Moderno",
+    "alias": []
+  },
+  {
+    "nome": "Humano",
     "alias": []
   },
   {
@@ -670,8 +737,16 @@
     "alias": []
   },
   {
+    "nome": "Promoção",
+    "alias": [
+      "Promocional"
+    ]
+  },
+  {
     "nome": "Explicando",
-    "alias": []
+    "alias": [
+      "Explicativo"
+    ]
   },
   {
     "nome": "Voz Original",
@@ -686,8 +761,20 @@
     "alias": []
   },
   {
+    "nome": "Sonho",
+    "alias": [
+      "Sonhador"
+    ]
+  },
+  {
     "nome": "Interpretado",
     "alias": []
+  },
+  {
+    "nome": "Interação",
+    "alias": [
+      "Interagindo"
+    ]
   },
   {
     "nome": "Emocionante",
@@ -715,11 +802,9 @@
   },
   {
     "nome": "Energia",
-    "alias": []
-  },
-  {
-    "nome": "Energético",
-    "alias": []
+    "alias": [
+      "Energético"
+    ]
   },
   {
     "nome": "Sotaque",
@@ -732,6 +817,12 @@
   {
     "nome": "Mineiro",
     "alias": []
+  },
+  {
+    "nome": "Ironia",
+    "alias": [
+      "Irônico"
+    ]
   },
   {
     "nome": "Contador de Histórias",
@@ -762,6 +853,31 @@
     "alias": []
   },
   {
+    "nome": "Familiar",
+    "alias": [
+      "Família"
+    ]
+  },
+  {
+    "nome": "Amigo",
+    "alias": [
+      "Humano",
+      "Próximo"
+    ]
+  },
+  {
+    "nome": "Mistério",
+    "alias": [
+      "Misterioso"
+    ]
+  },
+  {
+    "nome": "Infantil",
+    "alias": [
+      "Criança"
+    ]
+  },
+  {
     "nome": "Descritivo",
     "alias": []
   },
@@ -774,8 +890,10 @@
     "alias": []
   },
   {
-    "nome": "Francês",
-    "alias": []
+    "nome": "Humor",
+    "alias": [
+      "Engraçado"
+    ]
   },
   {
     "nome": "Espanhol",

@@ -4,6 +4,8 @@
   "subtitulo": "Grandes Estrelas",
   "tipo": "VIDEO",
   "youtube": "https://youtu.be/CWGIsYA2DS0",
+  "imagem-posicao": "left",
+  "imagem-tamanho": "50%",
   "principal":true,
   "tags": [
     "Credibilidade",
@@ -134,7 +136,7 @@
     "youtube": "https://youtu.be/UqKgK_ceZBg",
     "principal":true,
     "tags": [
-      "Ironia",
+      "Solto",
       "Descolado",
       "Jovem",
       "Oi",
@@ -148,7 +150,8 @@
       "Evento",
       "Rápido",
       "Blasé",
-      "Malandro"
+      "Malandro",
+      "Ironia"
     ]
   },
   {
@@ -159,7 +162,7 @@
     "soundcloud": "<iframe width=\"100%\" height=\"166\" scrolling=\"no\" frameborder=\"no\" allow=\"autoplay\" src=\"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/881162353&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true\"></iframe><div style=\"font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;\"><a href=\"https://soundcloud.com/gabrielduarte\" title=\"Gabriel Duarte - Locutor\" target=\"_blank\" style=\"color: #cccccc; text-decoration: none;\">Gabriel Duarte - Locutor</a> · <a href=\"https://soundcloud.com/gabrielduarte/anhanguera-apreendedores\" title=\"Anhanguera - Apreendedores\" target=\"_blank\" style=\"color: #cccccc; text-decoration: none;\">Anhanguera - Apreendedores</a></div>",
     "imagem": "https://i1.sndcdn.com/artworks-fkGFqD5x0hypn8z0-9lTpbg-t500x500.jpg",
     "tags": [
-      "Apresentação",
+      "Humano",
       "Palestra",
       "Inspirador",
       "Coach",
@@ -347,7 +350,7 @@
     ]
   },
   {
-    "id": "BTG Pactual - i-traction",
+    "id": "BTG Pactual - i-Traction",
     "titulo": "BTG Pactual",
     "subtitulo": "i-Traction",
     "tipo": "VIDEO",
@@ -1198,7 +1201,7 @@
     "titulo": "Disney",
     "subtitulo": "Princesas",
     "tipo": "VIDEO",
-    "soundcloud": "https://youtu.be/ZVly9fqE5Q8",
+    "youtube": "https://youtu.be/ZVly9fqE5Q8",
     "tags": [
       "Varejo",
       "Magia",
@@ -1674,7 +1677,7 @@
     ]
   },
   {
-    "id": "Itau - Financiamento de Acessórios",
+    "id": "Itaú - Financiamento de Acessórios",
     "titulo": "Itaú",
     "subtitulo": "Financiamento de Acessórios",
     "tipo": "VIDEO",
@@ -1722,7 +1725,7 @@
     ]
   },
   {
-    "id": "Mobuss - APP",
+    "id": "Mobus - APP",
     "titulo": "Mobus",
     "subtitulo": "APP",
     "tipo": "VIDEO",
@@ -1834,7 +1837,7 @@
   },
   {
     "id": "PSA Corretora - Seguro Conectado Sura",
-    "titulo": "PSCA Corretora",
+    "titulo": "PSA Corretora",
     "subtitulo": "Seguro Conectado Sura",
     "tipo": "VIDEO",
     "youtube": "https://youtu.be/izy3CgWNLI8",
@@ -1964,8 +1967,7 @@
     "titulo": "Renner",
     "subtitulo": "Dia dos Fuzarka",
     "tipo": "VIDEO",
-    "soundcloud": "",
-    "imagem": "https://youtu.be/5JBlOhoy74k",
+    "youtube": "https://youtu.be/5JBlOhoy74k",
     "tags": [
       "Interagindo",
       "Vendedor",
@@ -2040,8 +2042,8 @@
     ]
   },
   {
-    "id": "Secretaria da Educacao do Pará - Foco Pedagógico",
-    "titulo": "Secretaria da Educacao do Pará",
+    "id": "Secretaria da Educação do Pará - Foco Pedagógico",
+    "titulo": "Secretaria da Educação do Pará",
     "subtitulo": "Foco Pedagógico",
     "tipo": "VIDEO",
     "youtube": "https://youtu.be/Zl9Sd8_rZu0",
@@ -2116,7 +2118,7 @@
   },
   {
     "id": "TransMuraro - Institucional",
-    "titulo": "TranMuraro",
+    "titulo": "TransMuraro",
     "subtitulo": "Institucional",
     "tipo": "VIDEO",
     "youtube": "https://youtu.be/1xVqkPg_Qs8",
@@ -2248,7 +2250,7 @@
   {
     "id": "WWF - Manutenção",
     "titulo": "WWF",
-    "subtitulo": "Manutanção",
+    "subtitulo": "Manutenção",
     "tipo": "VIDEO",
     "youtube": "https://youtu.be/Tx1TtaoMZcQ",
     "tags": [
