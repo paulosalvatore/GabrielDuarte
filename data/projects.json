@@ -4,8 +4,9 @@
   "subtitulo": "Grandes Estrelas",
   "tipo": "VIDEO",
   "youtube": "https://youtu.be/CWGIsYA2DS0",
-  "imagem-posicao": "left",
-  "imagem-tamanho": "50%",
+  "imagem_posicao": "left",
+  "imagem_largura": "100%",
+  "imagem_altura": "150%",
   "principal":true,
   "tags": [
     "Credibilidade",
@@ -1033,7 +1034,7 @@
       "Malandro"
     ]
   },
-  
+
   {
     "id": "Deezer Family 02 1 Mes Mix 200420",
     "titulo": "Deezer",
@@ -1892,7 +1893,7 @@
       "Crescendo",
       "Animado",
       "Aerado",
-      "Sensual" 
+      "Sensual"
     ]
   },
   {
