@@ -4,6 +4,8 @@ const body = $('body');
 // Get the modal
 const modal = $('#project_details');
 
+var lastScrollY;
+
 const hideModal = function (popped) {
     const modalContent = $('.modal-content');
     modalContent.animate({
@@ -16,6 +18,8 @@ const hideModal = function (popped) {
         });
 
         $('body').removeClass('modal-open');
+
+        window.scrollTo(0, lastScrollY);
 
         if (!popped) {
             const url = new URL(document.URL);

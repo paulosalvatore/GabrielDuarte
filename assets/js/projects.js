@@ -244,6 +244,8 @@ const showModal = function (project) {
         'opacity': 1
     })
 
+    lastScrollY = window.pageYOffset;
+
     $('body').addClass('modal-open');
 };
 
