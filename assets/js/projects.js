@@ -175,8 +175,6 @@ const showModal = function (project) {
     if (modalProject !== project) {
         modalProject = project;
 
-        $('.chips.input-field .input').blur();
-
         // Reset iframe's visibility and content to force them to reload
 
         youtubeIframeWrapper.hide();
@@ -464,7 +462,7 @@ const loadAutocomplete = function () {
             ...project.tags,
             project.titulo,
             project.subtitulo,
-            project.titulo + ": " +project.subtitulo,
+            project.titulo + ': ' + project.subtitulo,
         ];
     }).flat()));
 
@@ -607,7 +605,9 @@ const loadAutocomplete = function () {
         onChipDelete: function () {
             updateSearch();
 
-            $('.chips.input-field .input').focus();
+            if (modal.css('display') === 'none') {
+                $('.chips.input-field .input').focus();
+            }
         },
         onChipSelect: function (event, chip) {
             const chips = getChipsInstance();
