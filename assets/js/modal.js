@@ -21,8 +21,11 @@ const hideModal = function (popped) {
             const url = new URL(document.URL);
             const nextUrl = lastSearchUrl || url.origin + url.pathname;
 
-            // TODO: Apenas mudar a URL não funciona, precisa disparar para adicionar as chips de busca
             history.pushState({}, null, nextUrl);
+
+            if (lastSearchUrl) {
+                loadCurrentUrl();
+            }
         }
     });
 };
