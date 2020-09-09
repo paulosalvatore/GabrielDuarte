@@ -251,6 +251,22 @@ const showModal = function (project) {
 
             tagElement.text(tag);
         }
+
+        // Tags
+        projectDetailsModal
+            .find('.project__tags .project__tag')
+            .on('click', function (event) {
+                hideModal();
+
+                const chips = getChipsInstance();
+
+                chips.addChip({
+                    tag: $(this).text()
+                });
+
+                event.preventDefault();
+                event.stopPropagation();
+            });
     }
 
     // Display modal and hide body's overflow
@@ -417,7 +433,7 @@ const loadEvents = function () {
     });
 
     // Tags
-    $('.tag').on('click', function (event) {
+    $('.tag').not('.project__tag--more-tags').on('click', function (event) {
         const chips = getChipsInstance();
 
         chips.addChip({
