@@ -139,3 +139,8 @@ input[type="text"] {
 .project__tag--more-tags:hover {
     border-bottom-color: inherit;
 }
+
+.project .project__title,
+.project .project__subtitle {
+    margin-top: -40px;
+}
