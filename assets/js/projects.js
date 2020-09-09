@@ -229,6 +229,24 @@ const showModal = function (project) {
             const audioUrl = loadMediaUrl(project, 'AUDIO');
             audioButton.attr('href', audioUrl);
         }
+
+        // Create tags
+
+        for (let i = 0; i < project.tags.length; i++) {
+            const tag = project.tags[i];
+
+            const tagElement = $('<a/>');
+
+            tagElement
+                .addClass('tag')
+                .addClass('project__tag');
+
+            projectDetailsModal
+                .find('.project__tags')
+                .append(tagElement);
+
+            tagElement.text(tag);
+        }
     }
 
     // Display modal and hide body's overflow
