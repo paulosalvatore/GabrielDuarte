@@ -24,12 +24,12 @@
 }
 
 #youtube_iframe {
-    height: calc(100vh - 185px);
+    height: calc(100vh - 215px);
 }
 
 @media screen and (max-width: 600px) {
     #youtube_iframe {
-        height: calc(100vh - 220px);
+        height: calc(100vh - 365px);
     }
 }
 
@@ -48,6 +48,6 @@
 
 @media screen and (max-width: 600px) {
     #project_details .project__tags .project__tag {
-        width: inherit;
+        width: initial;
     }
 }
