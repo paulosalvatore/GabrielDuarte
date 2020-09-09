@@ -123,3 +123,13 @@ input[type="text"] {
 .link-icon:before {
     content: "\f064";
 }
+
+.project__tag--more-tags {
+    background: none;
+    border: 1px solid #f2e7df;
+    color: white;
+}
+
+.project__tag--more-tags:hover {
+    border-bottom-color: inherit;
+}

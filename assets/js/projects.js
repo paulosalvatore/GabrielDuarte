@@ -355,13 +355,22 @@ const createProjectElement = function (project, index) {
     const projectTagBase = projectTagsElement.find('.project__tag');
 
     const tagsLength = !project.tags ? 0 : project.tags.length;
-    for (let i = 0; i < Math.min(visibleTagsAmount, tagsLength); i++) {
+    const tagsAmount = Math.min(visibleTagsAmount, tagsLength);
+    for (let i = 0; i < tagsAmount; i++) {
         const tag = project.tags[i];
 
         const projectTagClone = projectTagBase.clone();
 
         projectTagClone.text(tag);
 
+        projectTagsElement.append(projectTagClone);
+    }
+
+    // More tags
+    if (tagsLength - tagsAmount - 1 > 0) {
+        const projectTagClone = projectTagBase.clone();
+        projectTagClone.text(`${tagsLength - tagsAmount - 1}+`);
+        projectTagClone.addClass('project__tag--more-tags')
         projectTagsElement.append(projectTagClone);
     }
 
