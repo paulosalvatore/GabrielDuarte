@@ -232,6 +232,10 @@ const showModal = function (project) {
 
         // Create tags
 
+        projectDetailsModal
+            .find('.project__tags')
+            .html('');
+
         for (let i = 0; i < project.tags.length; i++) {
             const tag = project.tags[i];
 
