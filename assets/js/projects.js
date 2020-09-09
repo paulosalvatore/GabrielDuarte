@@ -306,6 +306,37 @@ const createProjectsElements = function (projects) {
     loadAutocomplete();
 };
 
+function createTagsElements(projectElement, tags) {
+    const projectTagsElement = projectElement.find('.project__tags');
+    const projectTagBase = $('<a/>');
+
+    projectTagBase
+        .addClass('tag')
+        .addClass('project__tag');
+
+    const tagsLength = !tags ? 0 : tags.length;
+    const tagsAmount = Math.min(visibleTagsAmount, tagsLength);
+    for (let i = 0; i < tagsAmount; i++) {
+        const tag = tags[i];
+
+        const projectTagClone = projectTagBase.clone();
+
+        projectTagClone.text(tag);
+
+        projectTagsElement.append(projectTagClone);
+    }
+
+    // More tags
+    if (tagsLength - tagsAmount - 1 > 0) {
+        const projectTagClone = projectTagBase.clone();
+        projectTagClone.text(`${tagsLength - tagsAmount - 1}+`);
+        projectTagClone.addClass('project__tag--more-tags')
+        projectTagsElement.append(projectTagClone);
+    }
+
+    projectTagBase.remove();
+}
+
 const createProjectElement = function (project, index) {
     // Clone base element
     const projectElement = projectBaseElement.clone();
@@ -387,32 +418,9 @@ const createProjectElement = function (project, index) {
         subtitleElement.hide();
     }
 
-    // Tags
+    // Create Tags
 
-    const projectTagsElement = projectElement.find('.project__tags');
-    const projectTagBase = projectTagsElement.find('.project__tag');
-
-    const tagsLength = !project.tags ? 0 : project.tags.length;
-    const tagsAmount = Math.min(visibleTagsAmount, tagsLength);
-    for (let i = 0; i < tagsAmount; i++) {
-        const tag = project.tags[i];
-
-        const projectTagClone = projectTagBase.clone();
-
-        projectTagClone.text(tag);
-
-        projectTagsElement.append(projectTagClone);
-    }
-
-    // More tags
-    if (tagsLength - tagsAmount - 1 > 0) {
-        const projectTagClone = projectTagBase.clone();
-        projectTagClone.text(`${tagsLength - tagsAmount - 1}+`);
-        projectTagClone.addClass('project__tag--more-tags')
-        projectTagsElement.append(projectTagClone);
-    }
-
-    projectTagBase.remove();
+    createTagsElements(projectElement, project.tags);
 
     // Link
     const link = getProjectUrl(project);
@@ -424,7 +432,7 @@ const createProjectElement = function (project, index) {
 
 const loadEvents = function () {
     // Modal display
-    $('.project .link').on('click', function () {
+    $('.project .link').unbind('click').on('click', function () {
         // Load Project
         const projectIndex = $(this).closest('.project').data('project');
         const project = projects[projectIndex];
@@ -629,10 +637,45 @@ const loadAutocomplete = function () {
             });
         }
 
+        // Transform array of objects into array of strings
+        const currentTags = chips.chipsData.map(e => e.tag);
+
+        // Update visible tags based on current search
+
+        $('.project').each(function () {
+            const projectIndex = invertClearUrl($(this).data('project'));
+
+            const project = projects.find(function (project) {
+                return project.id === projectIndex;
+            });
+
+            if (project) {
+                const foundTags =
+                    currentTags
+                        .filter(function (currentTag) {
+                            return project.tags.indexOf(currentTag) >= 0;
+                        });
+
+                const notFoundTags =
+                    project.tags
+                        .filter(function (tag) {
+                            return foundTags.indexOf(tag) < 0;
+                        });
+
+                const tags = [
+                    ...foundTags,
+                    ...notFoundTags
+                ];
+
+                for (let i = 0; i < Math.min(visibleTagsAmount, tags.length); i++) {
+                    $(this).find('.project__tag').eq(i).text(tags[i]);
+                }
+            }
+        });
+
         // Update selected tags
 
-        const currentTags = chips.chipsData.map(e => e.tag);
-        $('.tag').each(function() {
+        $('.tag').each(function () {
             const tag = $(this).text();
 
             const tagSelectedClass = 'project__tag--selected';
