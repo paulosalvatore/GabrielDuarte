@@ -601,7 +601,9 @@ const loadAutocomplete = function () {
             updateSearch();
 
             setTimeout(function () {
-                $('.chips.input-field .input').trigger('click');
+                if (inputFocusAvailable) {
+                    $('.chips.input-field .input').trigger('click');
+                }
             }, 100);
         },
         onChipDelete: function () {
@@ -636,13 +638,14 @@ const loadCurrentUrl = function (popped) {
         });
 
         showModal(project);
-    } else if (modal.css('display') !== 'none') {
+    } else if (modal.css('display') !== 'none' && !isHidingModal) {
         hideModal(popped);
     }
 
     const chips = getChipsInstance();
 
     updateLastSearchUrl = false;
+    inputFocusAvailable = false;
 
     if (url.hash.includes('busca_')) {
         const tags = invertClearUrl(url.hash.replace('#busca_', '')).split('&');
@@ -663,6 +666,10 @@ const loadCurrentUrl = function (popped) {
             chips.deleteChip(i);
         }
     }
+
+    setTimeout(function () {
+        inputFocusAvailable = true;
+    }, 100);
 
     updateLastSearchUrl = true;
 
