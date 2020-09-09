@@ -629,6 +629,21 @@ const loadAutocomplete = function () {
             });
         }
 
+        // Update selected tags
+
+        const currentTags = chips.chipsData.map(e => e.tag);
+        $('.tag').each(function() {
+            const tag = $(this).text();
+
+            const tagSelectedClass = 'project__tag--selected';
+
+            if (currentTags.indexOf(tag) >= 0) {
+                $(this).addClass(tagSelectedClass);
+            } else if ($(this).hasClass(tagSelectedClass)) {
+                $(this).removeClass(tagSelectedClass);
+            }
+        });
+
         updateProjectsElementsColor();
     };
 
