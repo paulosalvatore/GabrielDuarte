@@ -46,7 +46,8 @@
       "Rápido",
       "Blasé",
       "Malandro",
-      "Ironia"
+      "Ironia",
+      "Divertido"
     ]
   },
   {
@@ -95,7 +96,7 @@
   {
     "id": "Ri Happy - Dia das Crianças 2020",
     "titulo": "Ri Happy",
-    "subtitulo": "Dia das Crianças 2020",
+    "subtitulo": "Dia das Crianças",
     "tipo": "VIDEO",
     "youtube": "https://youtu.be/lG1KKeSHa_g",
     "principal": "true",
@@ -111,7 +112,8 @@
       "Pandemia",
       "Calmo",
       "Seguro",
-      "Jovem"
+      "Jovem",
+      "Divertido"
     ]
   },
   {
@@ -155,7 +157,8 @@
       "Informal",
       "Animado",
       "Alegre",
-      "Feliz"
+      "Feliz",
+      "Colorida"
     ]
   },
   {
@@ -177,7 +180,8 @@
       "Simpático",
       "Credibilidade",
       "De bem com a vida",
-      "Jovem"
+      "Jovem",
+      "Colorida"
     ]
   },
   {
@@ -207,7 +211,8 @@
       "Seguro",
       "Jovem",
       "Informal",
-      "Animado"
+      "Animado",
+      "Colorida"
     ]
   },
   {
@@ -282,7 +287,8 @@
       "Forte",
       "Simpático",
       "Folgado",
-      "Seguro"
+      "Seguro",
+      "Colorida"
     ]
   },
   {
@@ -315,7 +321,8 @@
       "Clube",
       "Informal",
       "Blasé",
-      "Triste"
+      "Triste",
+      "Dramático"
     ]
   },
   {
@@ -336,7 +343,8 @@
       "Brinquedo",
       "Alto",
       "Jovem",
-      "Animado"
+      "Animado",
+      "Divertido"
     ]
   },
   {
@@ -364,7 +372,8 @@
       "Regional",
       "Relaxado",
       "Storytelling",
-      "Storyteller"
+      "Storyteller",
+      "Dramático"
     ]
   },
   {
@@ -375,7 +384,6 @@
     "youtube": "https://youtu.be/gxQkR1cde68",
     "principal": true,
     "tags": [
-      "Brega",
       "Varejo",
       "Feliz",
       "Banco",
@@ -386,7 +394,8 @@
       "Animado",
       "Prático",
       "Simples",
-      "Fácil"
+      "Fácil",
+      "Divertido"
     ]
   },
   {
@@ -411,7 +420,8 @@
       "Poesia",
       "Poeta",
       "Recitado",
-      "Viagem"
+      "Viagem",
+      "Dramático"
     ]
   },
   {
@@ -422,7 +432,7 @@
     "youtube": "https://youtu.be/v57ZxsRy8uU",
     "tags": [
       "Tecnologia",
-      "Mercado Financeiro",
+      "Financeiro",
       "Forte",
       "Banco",
       "Formação",
@@ -455,7 +465,8 @@
       "Seguro",
       "Padrão",
       "Orgulho",
-      "Animado"
+      "Animado",
+      "Dramático"
     ]
   },
   {
@@ -472,7 +483,7 @@
       "Seguro",
       "Otimista",
       "Banco",
-      "Mercado Financeiro"
+      "Financeiro"
     ]
   },
   {
@@ -523,7 +534,29 @@
       "Publicidade",
       "Repertório",
       "Palavrão",
-      "Reel"
+      "Reel",
+      "Colorida"
+    ]
+  },
+  {
+    "id": "Audiolivro - A-ha",
+    "titulo": "My Take On Me",
+    "subtitulo": "Audiolivro",
+    "tipo": "AUDIO",
+    "soundcloud": "<iframe width=\"100%\" height=\"166\" scrolling=\"no\" frameborder=\"no\" allow=\"autoplay\" src=\"https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/893616946&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true\"></iframe><div style=\"font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;\"><a href=\"https://soundcloud.com/gabrielduarte\" title=\"Gabriel Duarte - Locutor\" target=\"_blank\" style=\"color: #cccccc; text-decoration: none;\">Gabriel Duarte - Locutor</a> · <a href=\"https://soundcloud.com/gabrielduarte/audiolivro-aha\" title=\"Audiolivro - Aha\" target=\"_blank\" style=\"color: #cccccc; text-decoration: none;\">Audiolivro - Aha</a></div>",
+    "imagem": "https://i1.sndcdn.com/artworks-y1RPqgsiHedgZpZJ-xo5cew-t500x500.jpg",
+    "principal": true,
+    "tags": [
+      "Áudio livro",
+      "Narrador",
+      "História",
+      "Morten Harket",
+      "Storyteller",
+      "Contador de Histórias",
+      "Padrão",
+      "Anos 80",
+      "Livro",
+      "Storytel"
     ]
   },
   {
@@ -615,7 +648,7 @@
       "Forte",
       "Jovem",
       "Animado",
-      "Mercado Financeiro",
+      "Financeiro",
       "Banco",
       "Moderno",
       "Motivador"
@@ -653,7 +686,8 @@
       "Energia",
       "Vendedor",
       "Banco",
-      "Alegre"
+      "Alegre",
+      "Divertido"
     ]
   },
   {
@@ -693,7 +727,8 @@
       "Emocionante",
       "Liberdade",
       "Otimista",
-      "Explicando"
+      "Explicando",
+      "Dramático"
     ]
   },
   {
@@ -729,6 +764,44 @@
       "Narrador",
       "Energia",
       "Amigo"
+    ]
+  },
+  {
+    "id": "Rappi - Preço Justo",
+    "titulo": "Rappi",
+    "subtitulo": "Preço Justo",
+    "tipo": "VIDEO",
+    "youtube": "https://youtu.be/mmmbIlSapDU",
+    "principal": true,
+    "tags": [
+      "Padrão",
+      "Institucional",
+      "Entrega",
+      "Instagram",
+      "Feliz",
+      "Vendedor",
+      "Amigo",
+      "Simpático"
+    ]
+  },
+  {
+    "id": "Bradesco Seguros - Dia dos Pais",
+    "titulo": "Bradesco Seguros",
+    "subtitulo": "Dia dos Pais",
+    "tipo": "VIDEO",
+    "youtube": "https://youtu.be/Q_G5p60OChI",
+    "principal": true,
+    "tags": [
+      "Emocionante",
+      "Institucional",
+      "Futuro",
+      "Instagram",
+      "Banco",
+      "Otimista",
+      "Carinho",
+      "Simpático",
+      "Esperança",
+      "Nostálgico"
     ]
   },
   {
@@ -857,7 +930,8 @@
       "Nostalgia",
       "Rap",
       "Sonhador",
-      "Rimado"
+      "Rimado",
+      "Dramático"
     ]
   },
   {
@@ -906,7 +980,8 @@
       "Emocionante",
       "Mágico",
       "Rimado",
-      "Sonhador"
+      "Sonhador",
+      "Dramático"
     ]
   },
   {
@@ -933,7 +1008,8 @@
       "Energia",
       "Explicando",
       "Malandro",
-      "Espertinho"
+      "Espertinho",
+      "Divertido"
     ]
   },
   {
@@ -991,7 +1067,8 @@
       "Sol",
       "Prazer",
       "Lento",
-      "Férias"
+      "Férias",
+      "Colorida"
     ]
   },
   {
@@ -1014,7 +1091,8 @@
       "Financeira",
       "Jovem",
       "História",
-      "Personagem"
+      "Personagem",
+      "Dramático"
     ]
   },
   {
@@ -1082,7 +1160,8 @@
       "Promoção",
       "Diálogo",
       "Alto Astral",
-      "Malandro"
+      "Malandro",
+      "Divertido"
     ]
   },
   {
@@ -1374,7 +1453,36 @@
       "Gritando",
       "Prazer",
       "Ansioso",
-      "Humor"
+      "Humor",
+      "Dramático",
+      "Colorida"
+    ]
+  },
+  {
+    "id": "Drinks and Clubs - Gin Tônica",
+    "titulo": "Drinks and Clubs",
+    "subtitulo": "Gin Tônica",
+    "tipo": "VIDEO",
+    "youtube": "https://youtu.be/6efiLJxxo6M",
+    "imagem": "",
+    "principal": true,
+    "tags": [
+      "Mágico",
+      "Ator",
+      "Interpretado",
+      "Tutorial",
+      "Sedutor",
+      "Engraçado",
+      "Personagem",
+      "Esquisito",
+      "Afetado",
+      "Onírico",
+      "Caricato",
+      "Lânguido",
+      "Prazer",
+      "Dramático",
+      "Colorida",
+      "Balada"
     ]
   },
   {
@@ -1486,7 +1594,8 @@
       "Conversado",
       "Aplicativo",
       "Comentado",
-      "Engraçado"
+      "Engraçado",
+      "Divertido"
     ]
   },
   {
@@ -1715,16 +1824,17 @@
     "youtube": "https://youtu.be/_3UVgMeGqqU",
     "tags": [
       "Motivacional",
-      "Emocionante",
+      "Carro",
       "Otimista",
       "Interpretado",
-      "Carro",
+      "Emocionante",
       "Pós-venda",
       "Concessionária",
       "Padrão",
       "Infotainment",
       "App Connect",
-      "Interno"
+      "Interno",
+      "Dramático"
     ]
   },
   {
@@ -1887,7 +1997,7 @@
     "tags": [
       "Simpático",
       "Informativo",
-      "Mercado Financeiro",
+      "Financeira",
       "Banco",
       "Seguro",
       "Soluções Financeiras",
@@ -1910,7 +2020,7 @@
     "tags": [
       "Calmo",
       "Informativo",
-      "Mercado Financeiro",
+      "Financeiro",
       "Banco",
       "Seguro",
       "Soluções Financeiras",
@@ -1936,7 +2046,7 @@
       "Jovem",
       "Informativo",
       "Amigo",
-      "Mercado Financeiro",
+      "Financeiro",
       "Banco",
       "Seguro",
       "Soluções Financeiras",
@@ -1956,8 +2066,8 @@
     "youtube": "https://youtu.be/54QczPxhf8s",
     "tags": [
       "Simpático",
-      "Informativo",
-      "Mercado Financeiro",
+      "Jovem",
+      "Financeiro",
       "Banco",
       "Seguro",
       "Soluções Financeiras",
@@ -1969,7 +2079,8 @@
       "Jovem",
       "Informal",
       "Tutorial",
-      "Amigo"
+      "Amigo",
+      "Informativo"
     ]
   },
   {
@@ -1981,7 +2092,7 @@
     "tags": [
       "Descolado",
       "Simpático",
-      "Mercado Financeiro",
+      "Financeiro",
       "Banco",
       "Seguro",
       "Soluções Financeiras",
@@ -2052,7 +2163,8 @@
       "Descritivo",
       "Animado",
       "Faustão",
-      "Oloco"
+      "Olocomeu",
+      "Divertido"
     ]
   },
   {
@@ -2225,7 +2337,7 @@
       "Interpretado",
       "Previdência",
       "Banco",
-      "Mercado Financeiro"
+      "Financeiro"
     ]
   },
   {
@@ -2259,7 +2371,7 @@
       "Interpretado",
       "Previdência",
       "Banco",
-      "Mercado Financeiro"
+      "Financeiro"
     ]
   },
   {
@@ -2276,7 +2388,7 @@
       "Interpretado",
       "Previdência",
       "Banco",
-      "Mercado Financeiro"
+      "Financeiro"
     ]
   },
   {
@@ -2524,7 +2636,7 @@
       "Interpretado",
       "Previdência",
       "Banco",
-      "Mercado Financeiro"
+      "Financeiro"
     ]
   },
   {
@@ -2580,7 +2692,7 @@
       "Interpretado",
       "Previdência",
       "Banco",
-      "Mercado Financeiro"
+      "Financeiro"
     ]
   },
   {
@@ -2710,7 +2822,7 @@
       "Interpretado",
       "Previdência",
       "Banco",
-      "Mercado Financeiro"
+      "Financeiro"
     ]
   },
   {
@@ -2727,7 +2839,7 @@
       "Interpretado",
       "Previdência",
       "Banco",
-      "Mercado Financeiro",
+      "Financeiro",
       "Otimista",
       "Positivo"
     ]
@@ -2869,7 +2981,7 @@
       "Interpretado",
       "Previdência",
       "Banco",
-      "Mercado Financeiro",
+      "Financeiro",
       "Amigo",
       "Jovem Adulto"
     ]
