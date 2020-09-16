@@ -2,7 +2,6 @@
   {
     "nome": "Banco",
     "alias": [
-      "Banko",
       "LOUCURATOTAL"
     ]
   },
@@ -796,7 +795,10 @@
   },
   {
     "nome": "Emocionante",
-    "alias": []
+    "alias": [
+      "Emotivo",
+      "Emoção"
+    ]
   },
   {
     "nome": "Oficial",
