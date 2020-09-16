@@ -280,7 +280,7 @@ const showModal = function (project) {
 
     modalContent.animate({
         'opacity': 1
-    })
+    });
 
     lastScrollY = window.pageYOffset;
 
