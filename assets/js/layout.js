@@ -73,7 +73,10 @@ $(function () {
         if (projectShareLink.css('display') === 'none') {
             projectShareLink.slideDown(duration, function () {
                 selectProjectUrlInput();
-                projectShareLinkCopy.trigger('click');
+
+                setTimeout(function () {
+                    projectShareLinkCopy.trigger('click');
+                }, 100);
             });
         } else {
             projectShareLink.slideUp(duration);
