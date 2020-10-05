@@ -727,8 +727,8 @@ const loadAutocomplete = function () {
         updateProjectsElementsColor();
     };
 
-    const placeholderDesktop = 'Busque por cliente, mood, interpretação, tipo da peça etc.';
-    const placeholderMobile = 'Cliente, mood etc.';
+    const placeholderDesktop = 'Busque por cliente, clima, interpretação, tipo da peça, área de atuação, etc';
+    const placeholderMobile = 'Cliente, clima, interpretação, etc';
 
     const isMobile = window.innerWidth <= 620;
 

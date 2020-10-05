@@ -221,12 +221,12 @@ ul:not(.browser-default) > li {
 }
 
 .project-search .chips.chips-autocomplete .input {
-    width: 375px !important;
+    width: 490px !important;
 }
 
 @media screen and (max-width: 620px) {
     .project-search .chips.chips-autocomplete .input {
-        max-width: 160px;
+        max-width: 210px;
     }
 }
 
