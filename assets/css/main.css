@@ -2946,8 +2946,13 @@ body.is-touch .tiles article .content {
     padding: 2em 0 0.1em 0;
 }
 
+#header .header__title a {
+    text-decoration: none;
+    border: 0;
+}
+
 #header .logo {
-    display: block;
+    display: inline-block;
     border-bottom: 0;
     color: inherit;
     font-weight: 900;
@@ -2955,7 +2960,6 @@ body.is-touch .tiles article .content {
     margin: 0 0 2.5em 0;
     text-decoration: none;
     text-transform: uppercase;
-    display: inline-block;
     font-size: 12px
 }
 
