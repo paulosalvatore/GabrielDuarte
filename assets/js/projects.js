@@ -43,6 +43,10 @@ $.getJSON('data/colors.json', function (data) {
 });
 
 $.getJSON('data/projects.json', function (data) {
+    data.forEach(function (project, index) {
+        data[index].tags = Array.from(new Set(project.tags));
+    });
+
     projects = data;
 
     dataReady();
