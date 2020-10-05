@@ -174,16 +174,20 @@ article {
 @media screen and (max-width: 600px) {
     .tag {
         width: 80%;
+        margin-top: 6px;
+        margin-bottom: 6px;
     }
 }
 
-.tag:hover {
-    background: #065fd4;
-    color: white !important;
-    -moz-transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
+@media screen and (min-width: 600px) {
+    .tag:hover {
+        background: #065fd4;
+        color: white !important;
+        -moz-transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+    }
 }
 
 /* Basic */
